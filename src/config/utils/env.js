@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { warn } from '@/config/utils/log';
 import pkg from '../../../package.json';
-import { getConfigFileName } from '../../../build/getConfigFileName';
+// import { getConfigFileName } from '../../../build/getConfigFileName';
 
 export function getCommonStoragePrefix() {
   const { VITE_GLOB_APP_SHORT_NAME } = getAppEnvConfig();
@@ -14,12 +14,12 @@ export function getStorageShortName() {
 }
 
 export function getAppEnvConfig() {
-  const ENV_NAME = getConfigFileName(process.env);
+  // const ENV_NAME = getConfigFileName(process.env);
 
   const ENV = isDevMode()
     ? //获取全局配置(打包时将独立提取配置)
       process.env
-    : window[ENV_NAME];
+    : process.env;
 
   const {
     VUE_APP_TITLE,
