@@ -17,14 +17,14 @@
       <ACol :span="12">
         <FormItem>
           <!-- No logic, you need to deal with it yourself -->
-          <Checkbox v-model:checked="rememberMe" size="small"> rememberMe </Checkbox>
+          <Checkbox v-model:checked="rememberMe" size="small"> 记住密码 </Checkbox>
         </FormItem>
       </ACol>
       <ACol :span="12">
         <FormItem :style="{ 'text-align': 'right' }">
           <!-- No logic, you need to deal with it yourself -->
           <Button type="link" size="small" @click="setLoginState(LoginStateEnum.RESET_PASSWORD)">
-            forgetPassword
+            忘记密码
           </Button>
         </FormItem>
       </ACol>
@@ -32,7 +32,7 @@
 
     <FormItem class="enter-x">
       <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
-        loginButton
+        登录
       </Button>
       <!-- <Button size="large" class="mt-4 enter-x" block @click="handleRegister">
         registerButton
@@ -40,13 +40,13 @@
     </FormItem>
     <ARow class="enter-x">
       <ACol :xs="24" :md="8">
-        <Button block @click="setLoginState(LoginStateEnum.MOBILE)"> mobileSignInFormTitle </Button>
+        <Button block @click="setLoginState(LoginStateEnum.MOBILE)"> 手机登录 </Button>
       </ACol>
       <ACol :md="8" :xs="24" class="xs:my-2 md:my-0 xs:mx-0 md:mx-2">
-        <Button block @click="setLoginState(LoginStateEnum.QR_CODE)"> qrSignInFormTitle </Button>
+        <Button block @click="setLoginState(LoginStateEnum.QR_CODE)"> 扫码登录 </Button>
       </ACol>
       <ACol :md="7" :xs="24">
-        <Button block @click="setLoginState(LoginStateEnum.REGISTER)"> registerButton </Button>
+        <Button block @click="setLoginState(LoginStateEnum.REGISTER)"> 重置密码 </Button>
       </ACol>
     </ARow>
 

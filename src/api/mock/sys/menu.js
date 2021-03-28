@@ -159,7 +159,7 @@ const levelRoute = {
     },
   ],
 };
-Mock.mock('http://localhost:8081/basic-api/getMenuListById', 'get', ({ query }) => {
+Mock.mock('http://test.com/test/basic-api/getMenuListById', 'get', ({ query }) => {
   const { id } = query;
   if (!id || id === '1') {
     return resultSuccess([dashboardRoute, authRoute, levelRoute]);

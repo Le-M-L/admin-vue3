@@ -1,6 +1,6 @@
 import { resultError, resultSuccess } from '../_util';
 import Mock from 'mockjs';
-function createFakeUserList() {
+function createFakeUserList () {
   return [
     {
       userId: '1',
@@ -39,9 +39,10 @@ const fakeCodeList = {
   2: ['2000', '4000', '6000'],
 };
 
-Mock.mock('http://localhost:8081/login', 'post', ({ body }) => {
-  console.log(body);
-  const { username, password } = body;
+Mock.mock('http://test.com/test/login', 'post', ({ body }) => {
+
+  const { username, password } = JSON.parse(body);
+  console.log(username, password)
   const checkUser = createFakeUserList().find(
     (item) => item.username === username && password === item.password
   );
@@ -58,7 +59,7 @@ Mock.mock('http://localhost:8081/login', 'post', ({ body }) => {
     desc,
   });
 });
-Mock.mock('http://localhost:8081/basic-api/getUserInfoById', 'get', ({ query }) => {
+Mock.mock('http://test.com/test/basic-api/getUserInfoById', 'get', ({ query }) => {
   const { userId } = query;
   const checkUser = createFakeUserList().find((item) => item.userId === userId);
   if (!checkUser) {
@@ -66,7 +67,7 @@ Mock.mock('http://localhost:8081/basic-api/getUserInfoById', 'get', ({ query }) 
   }
   return resultSuccess(checkUser);
 });
-Mock.mock('http://localhost:8081/basic-api/getPermCodeByUserId', 'get', ({ query }) => {
+Mock.mock('http://test.com/test/basic-api/getPermCodeByUserId', 'get', ({ query }) => {
   const { userId } = query;
   if (!userId) {
     return resultError('userId is not null!');

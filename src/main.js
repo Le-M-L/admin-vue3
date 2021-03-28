@@ -4,14 +4,14 @@ import 'tailwindcss/tailwind.css';
 
 import { createApp } from 'vue';
 import App from './App.vue';
-import '@/api/mock/index';
+
 import router, { setupRouter } from '@/router';
 import { setupStore } from '@/store';
 import { setupErrorHandle } from '@/config/logics/error-handle';
 import { setupGlobDirectives } from '@/config/directives';
 import { registerGlobComp } from '@/components/comps/registerGlobComp';
 import { isDevMode } from '@/config/utils/env';
-
+import '@/api/mock';
 (async () => {
   const app = createApp(App);
   // 注册全局组件

@@ -172,7 +172,7 @@ const transform = {
   },
 };
 
-function createAxios(opt) {
+function createAxios (opt) {
   return new VAxios(
     deepMerge(
       {
@@ -181,7 +181,7 @@ function createAxios(opt) {
         // baseURL: globSetting.apiUrl,
         // 接口可能会有通用的地址部分，可以统一抽取出来
         prefixUrl: prefix,
-        baseURL: 'http://localhost:8081/',
+        baseURL: 'http://test.com',
         headers: { 'Content-Type': ContentTypeEnum.JSON },
         // 如果是form-data格式
         // headers: { 'Content-Type': ContentTypeEnum.FORM_URLENCODED },

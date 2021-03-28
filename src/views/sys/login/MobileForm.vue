@@ -11,7 +11,7 @@
 
       <FormItem class="enter-x">
         <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
-          loginButton
+          登录
         </Button>
         <Button size="large" block class="mt-4" @click="handleBackLogin"> backSignIn </Button>
       </FormItem>
