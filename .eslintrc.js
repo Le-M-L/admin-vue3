@@ -25,7 +25,7 @@ module.exports = {
     'no-func-assign': 2, //禁止重复的函数声明
     'no-fallthrough': 0,
     'default-case': 0, //switch语句最后必须有default
-    'no-case-declarations': 'error', // 不允许在case/default子句中使用词法声明
+    'no-case-declarations': 0, // 不允许在case/default子句中使用词法声明
   },
   overrides: [
     {
