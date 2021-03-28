@@ -1,0 +1,61 @@
+<template>
+  <Tooltip placement="top">
+    <template #title>
+      <span>settingDens</span>
+    </template>
+
+    <Dropdown placement="bottomCenter" :trigger="['click']" :getPopupContainer="getPopupContainer">
+      <ColumnHeightOutlined />
+      <template #overlay>
+        <Menu @click="handleTitleClick" selectable v-model:selectedKeys="selectedKeysRef">
+          <MenuItem key="default">
+            <span>settingDensDefault</span>
+          </MenuItem>
+          <MenuItem key="middle">
+            <span>settingDensMiddle</span>
+          </MenuItem>
+          <MenuItem key="small">
+            <span>settingDensSmall</span>
+          </MenuItem>
+        </Menu>
+      </template>
+    </Dropdown>
+  </Tooltip>
+</template>
+<script>
+  import { defineComponent, ref } from 'vue';
+  import { Tooltip, Dropdown, Menu } from 'ant-design-vue';
+  import { ColumnHeightOutlined } from '@ant-design/icons-vue';
+
+  import { useTableContext } from '../../hooks/useTableContext';
+  import { getPopupContainer } from '@/config/utils';
+
+  export default defineComponent({
+    name: 'SizeSetting',
+    components: {
+      ColumnHeightOutlined,
+      Tooltip,
+      Dropdown,
+      Menu,
+      MenuItem: Menu.Item,
+    },
+    setup() {
+      const table = useTableContext();
+
+      const selectedKeysRef = ref([table.getSize()]);
+
+      function handleTitleClick({ key }) {
+        selectedKeysRef.value = [key];
+        table.setProps({
+          size: key,
+        });
+      }
+
+      return {
+        handleTitleClick,
+        selectedKeysRef,
+        getPopupContainer,
+      };
+    },
+  });
+</script>
