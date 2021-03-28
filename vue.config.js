@@ -4,12 +4,14 @@ let path = require('path');
 const { generateModifyVars } = require('./build/config/themeConfig');
 const ThemeColorReplacer = require('webpack-theme-color-replacer'); //主题配置
 const { resolveCss } = require('./build/config/theme-color-replacer-extend');
-console.log(generateModifyVars());
+
 const productionGzipExtensions = ['js', 'css'];
 const isProd = process.env.NODE_ENV === 'production'; //是否为正式环境
 
 module.exports = {
-  publicPath: isProd ? '/' : '/',
+  publicPath: isProd ? '/admin' : '/',
+  //输出文件按目录名
+  outputDir: 'admin',
   css: {
     loaderOptions: {
       less: {
@@ -77,8 +79,6 @@ module.exports = {
     port: 8080,
     https: false,
     hotOnly: false,
-    // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/cli-service.md#配置代理
-    // 查阅 参数描述 https://github.com/chimurai/http-proxy-middleware
     proxy: {
       '/test': {
         target: 'http://test.com/',
