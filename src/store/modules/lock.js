@@ -22,11 +22,11 @@ export default {
   actions: {
     //开锁
     async unLockAction(context, { password }) {
-      let { rootGetters, commit } = context;
+      let { rootGetters, commit, dispatch } = context;
       const tryLogin = async () => {
         try {
           const username = rootGetters['user/getUserInfoState'].username;
-          const res = await commit(
+          const res = await dispatch(
             'user/login',
             { username, password, goHome: false, mode: 'none' },
             { root: true }

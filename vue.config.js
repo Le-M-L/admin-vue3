@@ -1,6 +1,6 @@
 let path = require('path');
 
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
+// const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const { generateModifyVars } = require('./build/config/themeConfig');
 const ThemeColorReplacer = require('webpack-theme-color-replacer'); //主题配置
 const { resolveCss } = require('./build/config/theme-color-replacer-extend');
@@ -36,14 +36,14 @@ module.exports = {
     // 生产环境下将资源压缩成gzip格式
     if (isProd) {
       // add `CompressionWebpack` plugin to webpack plugins
-      config.plugins.push(
-        new CompressionWebpackPlugin({
-          algorithm: 'gzip',
-          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-          threshold: 10240,
-          minRatio: 0.8,
-        })
-      );
+      // config.plugins.push(
+      //   new CompressionWebpackPlugin({
+      //     algorithm: 'gzip',
+      //     test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+      //     threshold: 10240,
+      //     minRatio: 0.8,
+      //   })
+      // );
     }
     config.plugins.push(
       new ThemeColorReplacer({
@@ -70,4 +70,25 @@ module.exports = {
     // });
   },
   chainWebpack: (config) => {},
+  // 配置 webpack-dev-server 行为。
+  devServer: {
+    open: true,
+    host: 'localhost',
+    port: 8080,
+    https: false,
+    hotOnly: false,
+    // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/cli-service.md#配置代理
+    // 查阅 参数描述 https://github.com/chimurai/http-proxy-middleware
+    proxy: {
+      '/test': {
+        target: 'http://test.com/',
+        // pathRewrite: {
+        //   '^/test': '',
+        // },
+        timeout: 3000,
+        changeOrigin: true,
+      },
+    },
+    before: (app) => {},
+  },
 };

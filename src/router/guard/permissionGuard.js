@@ -3,7 +3,6 @@
 import store from '@/store';
 
 import { PageEnum } from '@/config/enums/pageEnum';
-import { userStore } from '@/store/modules/user';
 
 import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
 
@@ -12,6 +11,7 @@ const LOGIN_PATH = PageEnum.BASE_LOGIN;
 const whitePathList = [LOGIN_PATH];
 
 export function createPermissionGuard(router) {
+  console.log(router);
   router.beforeEach(async (to, from, next) => {
     // 在处理登录后跳转到404页面
     if (from.path === LOGIN_PATH && to.name === PAGE_NOT_FOUND_ROUTE.name) {
@@ -25,7 +25,7 @@ export function createPermissionGuard(router) {
       return;
     }
 
-    const token = userStore.getTokenState;
+    const token = store.getters['user/getTokenState'];
 
     // 令牌不存在
     if (!token) {

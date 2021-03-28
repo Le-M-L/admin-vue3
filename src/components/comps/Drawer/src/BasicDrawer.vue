@@ -201,7 +201,7 @@
     }
 
     .ant-drawer-body {
-      height: calc(100% - @header-height);
+      height: calc(~'100% - @{header-height}');
       padding: 0;
       background-color: #fff;
 
@@ -241,7 +241,7 @@
     }
 
     .ant-drawer-body {
-      height: calc(100% - @detail-header-height);
+      height: calc(~'100% - @{header-height}');
     }
   }
 </style>

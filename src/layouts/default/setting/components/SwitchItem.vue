@@ -5,8 +5,8 @@
       v-bind="getBindValue"
       @change="handleChange"
       :disabled="disabled"
-      checkedChildren="on"
-      unCheckedChildren="off"
+      checkedChildren="开"
+      unCheckedChildren="关"
     />
   </div>
 </template>

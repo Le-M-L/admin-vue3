@@ -32,6 +32,7 @@ const userStore = {
     },
     commitRoleListState(state, roleList) {
       state.roleListState = roleList;
+      console.log(state.roleListState);
       setAuthCache(ROLES_KEY, roleList);
     },
     commitTokenState(state, info) {
@@ -73,7 +74,7 @@ const userStore = {
       return userInfo;
     },
     //login out
-    async loginOut(context, goLogin = false) {
+    async logout(context, goLogin = false) {
       goLogin && router.push(PageEnum.BASE_LOGIN);
     },
     //退出前确认
@@ -82,8 +83,8 @@ const userStore = {
       const { createConfirm } = useMessage();
       createConfirm({
         iconType: 'warning',
-        title: '退出登录',
-        content: '退出登录成功',
+        title: '温馨提醒',
+        content: '是否确认退出系统?',
         onOk: async () => {
           await dispatch('loginOut', true);
         },

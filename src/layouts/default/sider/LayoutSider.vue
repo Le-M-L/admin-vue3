@@ -25,6 +25,7 @@
   </Sider>
 </template>
 <script>
+  // @ts-nocheck
   import { computed, defineComponent, ref, unref } from 'vue';
 
   import { Layout } from 'ant-design-vue';
@@ -138,7 +139,7 @@
 
     &--mix {
       top: @header-height;
-      height: calc(100% - @header-height);
+      height: calc(~'100% - @{header-height}');
     }
 
     &.ant-layout-sider-dark {

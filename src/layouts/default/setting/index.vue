@@ -1,19 +1,19 @@
 <template>
   <div @click="openDrawer">
-    <Icon icon="ion:settings-outline" />
+    <SettingOutlined />
     <SettingDrawer @register="register" />
   </div>
 </template>
 <script>
   import { defineComponent } from 'vue';
   import SettingDrawer from './SettingDrawer';
-  import Icon from '@/components/comps/Icon';
+  import { SettingOutlined } from '@ant-design/icons-vue';
 
   import { useDrawer } from '@/components/comps/Drawer';
 
   export default defineComponent({
     name: 'SettingButton',
-    components: { SettingDrawer, Icon },
+    components: { SettingDrawer, SettingOutlined },
     setup() {
       const [register, { openDrawer }] = useDrawer();
 

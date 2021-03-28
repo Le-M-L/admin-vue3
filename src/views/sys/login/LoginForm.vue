@@ -50,7 +50,7 @@
       </ACol>
     </ARow>
 
-    <Divider class="enter-x">otherSignIn</Divider>
+    <Divider class="enter-x">其他登录方式</Divider>
 
     <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
       <GithubFilled />
@@ -141,10 +141,11 @@
               username: data.account,
             })
           );
+          console.log(userInfo);
           if (userInfo) {
             notification.success({
-              message: 'loginSuccessTitle',
-              description: `loginSuccessDesc: ${userInfo.realName}`,
+              message: '登录成功',
+              description: `欢迎回来: ${userInfo.realName}`,
               duration: 3,
             });
           }

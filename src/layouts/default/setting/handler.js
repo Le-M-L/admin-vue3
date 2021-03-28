@@ -15,6 +15,7 @@ export function baseHandler(event, value) {
 
 export function handler(event, value) {
   const { getThemeColor } = useRootSetting();
+
   switch (event) {
     case HandlerEnum.CHANGE_LAYOUT:
       const { mode, type, split } = value;

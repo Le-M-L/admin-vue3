@@ -14,7 +14,6 @@
       const { path } = params;
 
       const _path = Array.isArray(path) ? path.join('/') : path;
-
       replace({
         path: '/' + _path,
         query,

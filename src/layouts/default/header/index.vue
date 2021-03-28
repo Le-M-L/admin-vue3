@@ -33,7 +33,7 @@
 
     <!-- action  -->
     <div :class="`${prefixCls}-action`">
-      <AppSearch :class="`${prefixCls}-action__item `" />
+      <!-- <AppSearch :class="`${prefixCls}-action__item `" /> -->
 
       <ErrorAction v-if="getUseErrorHandle" :class="`${prefixCls}-action__item error-action`" />
 
@@ -64,7 +64,7 @@
   import LayoutMenu from '../menu/index.vue';
   import LayoutTrigger from '../trigger/index.vue';
 
-  import { AppSearch } from '@/components/comps/Application';
+  // import { AppSearch } from '@/components/comps/Application';
 
   import { useHeaderSetting } from '@/config/hooks/setting/useHeaderSetting';
   import { useMenuSetting } from '@/config/hooks/setting/useMenuSetting';
@@ -90,7 +90,6 @@
       UserDropDown,
       FullScreen,
       Notify,
-      AppSearch,
       ErrorAction,
       SettingDrawer: createAsyncComponent(() => import('@/layouts/default/setting/index.vue'), {
         loading: true,

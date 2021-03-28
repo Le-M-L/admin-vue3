@@ -11,7 +11,7 @@
             @click="handleClickMenu(item)"
             :disabled="item.disabled"
           >
-            <Icon :icon="item.icon" v-if="item.icon" />
+            <component v-if="item.icon" :is="item.icon" />
             <span class="ml-1">{{ item.text }}</span>
           </a-menu-item>
           <a-menu-divider v-if="item.divider" :key="`d-${item.event}`" />
@@ -24,7 +24,6 @@
 <script>
   import { defineComponent, computed, unref } from 'vue';
   import { Dropdown, Menu } from 'ant-design-vue';
-  import Icon from '@/components/comps/Icon/index';
 
   export default defineComponent({
     name: 'BasicDropdown',
@@ -33,7 +32,6 @@
       [Menu.name]: Menu,
       [Menu.Item.name]: Menu.Item,
       [Menu.Divider.name]: Menu.Divider,
-      Icon,
     },
     props: {
       /**

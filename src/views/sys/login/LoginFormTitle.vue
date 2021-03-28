@@ -16,10 +16,10 @@
       const getFormTitle = computed(() => {
         const titleObj = {
           [LoginStateEnum.RESET_PASSWORD]: 'forgetFormTitle',
-          [LoginStateEnum.LOGIN]: '账号登录',
-          [LoginStateEnum.REGISTER]: 'signUpFormTitle',
+          [LoginStateEnum.LOGIN]: '登录',
+          [LoginStateEnum.REGISTER]: '注册',
           [LoginStateEnum.MOBILE]: '手机登录',
-          [LoginStateEnum.QR_CODE]: '扫码登录',
+          [LoginStateEnum.QR_CODE]: '二维码登录',
         };
         return titleObj[unref(getLoginState)];
       });

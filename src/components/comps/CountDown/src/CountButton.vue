@@ -1,6 +1,6 @@
 <template>
   <Button v-bind="$attrs" :disabled="isStart" @click="handleStart" :loading="loading">
-    {{ !isStart ? 'normalText' : `sendText${currentCount}` }}
+    {{ !isStart ? '获取验证码' : `${currentCount}秒后重新获取` }}
   </Button>
 </template>
 <script>

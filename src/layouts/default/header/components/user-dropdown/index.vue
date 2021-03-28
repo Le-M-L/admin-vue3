@@ -18,8 +18,13 @@
           v-if="getShowDoc"
         />
         <MenuDivider v-if="getShowDoc" />
-        <MenuItem key="lock" text="tooltipLock" icon="ion:lock-closed-outline" />
-        <MenuItem key="logout" text="dropdownItemLoginOut" icon="ion:power-outline" />
+        <MenuItem key="lock" text="锁定屏幕">
+          <LockOutlined />
+        </MenuItem>
+
+        <MenuItem key="logout" text="退出系统">
+          <PoweroffOutlined />
+        </MenuItem>
       </Menu>
     </template>
   </Dropdown>
@@ -43,7 +48,7 @@
   import { openWindow } from '@/config/utils';
 
   import { createAsyncComponent } from '@/config/utils/factory/createAsyncComponent';
-
+  import { LockOutlined, PoweroffOutlined } from '@ant-design/icons-vue';
   export default defineComponent({
     name: 'UserDropdown',
     components: {
@@ -52,6 +57,8 @@
       MenuItem: createAsyncComponent(() => import('./DropMenuItem.vue')),
       MenuDivider: Menu.Divider,
       LockAction: createAsyncComponent(() => import('../lock/LockModal.vue')),
+      LockOutlined,
+      PoweroffOutlined,
     },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),

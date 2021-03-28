@@ -1,4 +1,5 @@
 <script>
+  // @ts-nocheck
   import { computed, defineComponent, unref, toRef } from 'vue';
   import { BasicMenu } from '@/components/comps/Menu';
   import { SimpleMenu } from '@/components/comps/SimpleMenu';

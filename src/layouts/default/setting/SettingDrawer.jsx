@@ -157,78 +157,78 @@ export default defineComponent({
       return (
         <>
           <SwitchItem
-            title="splitMenu"
+            title="分割菜单"
             event={HandlerEnum.MENU_SPLIT}
             def={unref(getSplit)}
             disabled={!unref(getShowMenuRef) || unref(getMenuType) !== MenuTypeEnum.MIX}
           />
           <SwitchItem
-            title="mixSidebarFixed"
+            title="固定展开菜单"
             event={HandlerEnum.MENU_FIXED_MIX_SIDEBAR}
             def={unref(getMixSideFixed)}
             disabled={!unref(getIsMixSidebar)}
           />
 
           <SwitchItem
-            title="closeMixSidebarOnChange"
+            title="切换页面关闭菜单"
             event={HandlerEnum.MENU_CLOSE_MIX_SIDEBAR_ON_CHANGE}
             def={unref(getCloseMixSidebarOnChange)}
             disabled={!unref(getIsMixSidebar)}
           />
           <SwitchItem
-            title="menuCollapse"
+            title="折叠菜单"
             event={HandlerEnum.MENU_COLLAPSED}
             def={unref(getCollapsed)}
             disabled={!unref(getShowMenuRef)}
           />
 
           <SwitchItem
-            title="menuDrag"
+            title="侧边菜单拖拽"
             event={HandlerEnum.MENU_HAS_DRAG}
             def={unref(getCanDrag)}
             disabled={!unref(getShowMenuRef)}
           />
           <SwitchItem
-            title="menuSearch"
+            title="菜单搜索"
             event={HandlerEnum.HEADER_SEARCH}
             def={unref(getShowSearch)}
             disabled={!unref(getShowHeader)}
           />
           <SwitchItem
-            title="menuAccordion"
+            title="侧边菜单手风琴模式"
             event={HandlerEnum.MENU_ACCORDION}
             def={unref(getAccordion)}
             disabled={!unref(getShowMenuRef)}
           />
 
           <SwitchItem
-            title="collapseMenuDisplayName"
+            title="折叠菜单显示名称"
             event={HandlerEnum.MENU_COLLAPSED_SHOW_TITLE}
             def={unref(getCollapsedShowTitle)}
             disabled={!unref(getShowMenuRef) || !unref(getCollapsed) || unref(getIsMixSidebar)}
           />
 
           <SwitchItem
-            title="fixedHeader"
+            title="固定header"
             event={HandlerEnum.HEADER_FIXED}
             def={unref(getHeaderFixed)}
             disabled={!unref(getShowHeader)}
           />
           <SwitchItem
-            title="fixedSideBar"
+            title="固定Sidebar"
             event={HandlerEnum.MENU_FIXED}
             def={unref(getMenuFixed)}
             disabled={!unref(getShowMenuRef) || unref(getIsMixSidebar)}
           />
           <SelectItem
-            title="mixSidebarTrigger"
+            title="混合菜单触发方式"
             event={HandlerEnum.MENU_TRIGGER_MIX_SIDEBAR}
             def={unref(getMixSideTrigger)}
             options={mixSidebarTriggerOptions}
             disabled={!unref(getIsMixSidebar)}
           />
           <SelectItem
-            title="topMenuLayout"
+            title="顶部菜单布局"
             event={HandlerEnum.MENU_TOP_ALIGN}
             def={unref(getTopMenuAlign)}
             options={topMenuAlignOptions}
@@ -240,29 +240,29 @@ export default defineComponent({
             }
           />
           <SelectItem
-            title="menuCollapseButton"
+            title="菜单折叠按钮"
             event={HandlerEnum.MENU_TRIGGER}
             def={triggerDef}
             options={triggerOptions}
             disabled={!unref(getShowMenuRef) || unref(getIsMixSidebar)}
           />
           <SelectItem
-            title="contentMode"
+            title="内容区域宽度"
             event={HandlerEnum.CONTENT_MODE}
             def={unref(getContentMode)}
             options={contentModeOptions}
           />
           <InputNumberItem
-            title="autoScreenLock"
+            title="自动锁屏"
             min={0}
             event={HandlerEnum.LOCK_TIME}
             defaultValue={unref(getLockTime)}
             formatter={(value) => {
-              return parseInt(value) === 0 ? `0(notAutoScreenLock)` : `${value}minute`;
+              return parseInt(value) === 0 ? `0(不锁屏)` : `${value}minute`;
             }}
           />
           <InputNumberItem
-            title="expandedMenuWidth"
+            title="菜单展开宽度"
             max={600}
             min={100}
             step={10}
@@ -279,14 +279,14 @@ export default defineComponent({
       return (
         <>
           <SwitchItem
-            title="breadcrumb"
+            title="面包屑"
             event={HandlerEnum.SHOW_BREADCRUMB}
             def={unref(getShowBreadCrumb)}
             disabled={!unref(getShowHeader)}
           />
 
           <SwitchItem
-            title="breadcrumbIcon"
+            title="面包屑图标"
             event={HandlerEnum.SHOW_BREADCRUMB_ICON}
             def={unref(getShowBreadCrumbIcon)}
             disabled={!unref(getShowHeader)}
@@ -295,49 +295,49 @@ export default defineComponent({
           <SwitchItem title="tabs" event={HandlerEnum.TABS_SHOW} def={unref(getShowMultipleTab)} />
 
           <SwitchItem
-            title="tabsRedoBtn"
+            title="标签页"
             event={HandlerEnum.TABS_SHOW_REDO}
             def={unref(getShowRedo)}
             disabled={!unref(getShowMultipleTab)}
           />
 
           <SwitchItem
-            title="tabsQuickBtn"
+            title="标签页刷新按钮"
             event={HandlerEnum.TABS_SHOW_QUICK}
             def={unref(getShowQuick)}
             disabled={!unref(getShowMultipleTab)}
           />
           <SwitchItem
-            title="tabsFoldBtn"
+            title="标签页快捷按钮"
             event={HandlerEnum.TABS_SHOW_FOLD}
             def={unref(getShowFold)}
             disabled={!unref(getShowMultipleTab)}
           />
 
           <SwitchItem
-            title="sidebar"
+            title="左侧菜单"
             event={HandlerEnum.MENU_SHOW_SIDEBAR}
             def={unref(getShowMenu)}
             disabled={unref(getIsHorizontal)}
           />
 
-          <SwitchItem title="header" event={HandlerEnum.HEADER_SHOW} def={unref(getShowHeader)} />
+          <SwitchItem title="顶栏" event={HandlerEnum.HEADER_SHOW} def={unref(getShowHeader)} />
           <SwitchItem
             title="Logo"
             event={HandlerEnum.SHOW_LOGO}
             def={unref(getShowLogo)}
             disabled={unref(getIsMixSidebar)}
           />
-          <SwitchItem title="footer" event={HandlerEnum.SHOW_FOOTER} def={unref(getShowFooter)} />
+          <SwitchItem title="页脚" event={HandlerEnum.SHOW_FOOTER} def={unref(getShowFooter)} />
           <SwitchItem
-            title="fullContent"
+            title="全屏内容"
             event={HandlerEnum.FULL_CONTENT}
             def={unref(getFullContent)}
           />
 
-          <SwitchItem title="grayMode" event={HandlerEnum.GRAY_MODE} def={unref(getGrayMode)} />
+          <SwitchItem title="灰色模式" event={HandlerEnum.GRAY_MODE} def={unref(getGrayMode)} />
 
-          <SwitchItem title="colorWeak" event={HandlerEnum.COLOR_WEAK} def={unref(getColorWeak)} />
+          <SwitchItem title="色弱模式" event={HandlerEnum.COLOR_WEAK} def={unref(getColorWeak)} />
         </>
       );
     }
@@ -346,24 +346,24 @@ export default defineComponent({
       return (
         <>
           <SwitchItem
-            title="progress"
+            title="顶部进度条"
             event={HandlerEnum.OPEN_PROGRESS}
             def={unref(getOpenNProgress)}
           />
           <SwitchItem
-            title="switchLoading"
+            title="切换Loading"
             event={HandlerEnum.OPEN_PAGE_LOADING}
             def={unref(getOpenPageLoading)}
           />
 
           <SwitchItem
-            title="switchAnimation"
+            title="切换动画"
             event={HandlerEnum.OPEN_ROUTE_TRANSITION}
             def={unref(getEnableTransition)}
           />
 
           <SelectItem
-            title="animationType"
+            title="动画类型"
             event={HandlerEnum.ROUTER_TRANSITION}
             def={unref(getBasicTransition)}
             options={routerTransitionOptions}
@@ -374,20 +374,20 @@ export default defineComponent({
     }
 
     return () => (
-      <BasicDrawer {...attrs} title="drawerTitle" width={330} wrapClassName="setting-drawer">
-        <Divider>navMode</Divider>
+      <BasicDrawer {...attrs} title="项目配置" width={330} wrapClassName="setting-drawer">
+        <Divider>导航栏模式</Divider>
         {renderSidebar()}
-        <Divider>sysTheme</Divider>
+        <Divider>系统主题</Divider>
         {renderMainTheme()}
-        <Divider>headerTheme</Divider>
+        <Divider>顶栏主题</Divider>
         {renderHeaderTheme()}
-        <Divider>sidebarTheme</Divider>
+        <Divider>菜单主题</Divider>
         {renderSiderTheme()}
-        <Divider>interfaceFunction</Divider>
+        <Divider>界面功能</Divider>
         {renderFeatures()}
-        <Divider>interfaceDisplay</Divider>
+        <Divider>界面显示</Divider>
         {renderContent()}
-        <Divider>animation</Divider>
+        <Divider>动画</Divider>
         {renderTransition()}
         <Divider />
         <SettingFooter />

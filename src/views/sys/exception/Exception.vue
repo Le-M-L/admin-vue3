@@ -55,8 +55,8 @@
         return unref(statusMapRef).get(unref(getStatus));
       });
 
-      const backLoginI18n = 'backLogin';
-      const backHomeI18n = 'backHome';
+      const backLoginI18n = '返回登录';
+      const backHomeI18n = '返回首页';
 
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_ACCESS, {
         title: '403',
@@ -69,7 +69,7 @@
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_FOUND, {
         title: '404',
         status: `${ExceptionEnum.PAGE_NOT_FOUND}`,
-        subTitle: 'subTitle404',
+        subTitle: '抱歉，您访问的页面不存在。',
         btnText: props.full ? backLoginI18n : backHomeI18n,
         handler: () => (props.full ? go(PageEnum.BASE_LOGIN) : go()),
       });

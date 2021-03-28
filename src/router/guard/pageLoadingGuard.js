@@ -1,6 +1,6 @@
 // @ts-nocheck
 import store from '@/store';
-import { useTransitionSetting } from '@/hooks/setting/useTransitionSetting';
+import { useTransitionSetting } from '@/config/hooks/setting/useTransitionSetting';
 import { unref } from 'vue';
 
 const { getOpenPageLoading } = useTransitionSetting();

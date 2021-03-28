@@ -3,29 +3,29 @@
     <LoginFormTitle class="enter-x" />
     <Form class="p-4 enter-x" :model="formData" :rules="getFormRules" ref="formRef">
       <FormItem name="account" class="enter-x">
-        <Input size="large" v-model:value="formData.account" placeholder="userName" />
+        <Input size="large" v-model:value="formData.account" placeholder="账号" />
       </FormItem>
       <FormItem name="mobile" class="enter-x">
-        <Input size="large" v-model:value="formData.mobile" placeholder="mobile" />
+        <Input size="large" v-model:value="formData.mobile" placeholder="手机号" />
       </FormItem>
       <FormItem name="sms" class="enter-x">
-        <CountdownInput size="large" v-model:value="formData.sms" placeholder="smsCode" />
+        <CountdownInput size="large" v-model:value="formData.sms" placeholder="短信验证码" />
       </FormItem>
       <FormItem name="password" class="enter-x">
-        <StrengthMeter size="large" v-model:value="formData.password" placeholder="password" />
+        <StrengthMeter size="large" v-model:value="formData.password" placeholder="密码" />
       </FormItem>
       <FormItem name="confirmPassword" class="enter-x">
         <InputPassword
           size="large"
           visibilityToggle
           v-model:value="formData.confirmPassword"
-          placeholder="confirmPassword"
+          placeholder="确认密码"
         />
       </FormItem>
 
       <FormItem class="enter-x" name="policy">
         <!-- No logic, you need to deal with it yourself -->
-        <Checkbox v-model:checked="formData.policy" size="small"> policy </Checkbox>
+        <Checkbox v-model:checked="formData.policy" size="small"> 我同意xxx隐私政策 </Checkbox>
       </FormItem>
 
       <Button
@@ -36,9 +36,9 @@
         @click="handleRegister"
         :loading="loading"
       >
-        registerButton
+        注 册
       </Button>
-      <Button size="large" block class="enter-x mt-4" @click="handleBackLogin"> backSignIn </Button>
+      <Button size="large" block class="enter-x mt-4" @click="handleBackLogin"> 返 回 </Button>
     </Form>
   </template>
 </template>

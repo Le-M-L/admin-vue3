@@ -158,7 +158,7 @@
       }
 
       .@{prefix-cls}-input {
-        width: calc(100% - 38px);
+        width: calc(~'100% - 38px');
       }
 
       .@{prefix-cls}-cancel {
@@ -176,7 +176,7 @@
       }
 
       .@{prefix-cls}-list {
-        height: calc(100% - 80px);
+        height: calc(~'100% - 80px');
         max-height: unset;
 
         &__item {

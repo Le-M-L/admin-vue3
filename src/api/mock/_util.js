@@ -2,7 +2,7 @@
 
 export function resultSuccess(result, { message = 'ok' } = {}) {
   return {
-    code: 0,
+    code: '0000',
     result,
     message,
     type: 'success',

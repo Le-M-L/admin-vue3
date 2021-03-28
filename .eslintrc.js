@@ -19,11 +19,13 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-dupe-keys': 'error', // 禁止在对象字面量中出现重复名称的键名
     'no-unreachable': 0, //防止使用swtich语句 语法检查报错
     'no-duplicate-case': 2, //switch中的case标签不能重复
     'no-func-assign': 2, //禁止重复的函数声明
-    // 'default-case': 2, //switch语句最后必须有default
-    'no-dupe-keys': 'error', // 禁止在对象字面量中出现重复名称的键名
+    'no-fallthrough': 0,
+    'default-case': 0, //switch语句最后必须有default
+    'no-case-declarations': 'error', // 不允许在case/default子句中使用词法声明
   },
   overrides: [
     {

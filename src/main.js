@@ -12,6 +12,10 @@ import { setupGlobDirectives } from '@/config/directives';
 import { registerGlobComp } from '@/components/comps/registerGlobComp';
 import { isDevMode } from '@/config/utils/env';
 import '@/api/mock';
+
+// router-guard
+import '@/router/guard';
+
 (async () => {
   const app = createApp(App);
   // 注册全局组件

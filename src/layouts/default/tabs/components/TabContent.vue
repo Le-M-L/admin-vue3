@@ -5,23 +5,23 @@
     </div>
 
     <span :class="`${prefixCls}__extra-quick`" v-else @click="handleContext">
-      <Icon icon="ion:chevron-down" />
+      <RightOutlined />
     </span>
   </Dropdown>
 </template>
+
 <script>
   import { defineComponent, computed } from 'vue';
   import { Dropdown } from '@/components/comps/Dropdown/index';
-  import Icon from '@/components/comps/Icon';
 
   import { TabContentEnum } from '../types';
 
   import { useDesign } from '@/config/hooks/web/useDesign';
   import { useTabDropdown } from '../useTabDropdown';
-
+  import { RightOutlined } from '@ant-design/icons-vue';
   export default defineComponent({
     name: 'TabContent',
-    components: { Dropdown, Icon },
+    components: { Dropdown, RightOutlined },
     props: {
       tabItem: {
         type: Object,

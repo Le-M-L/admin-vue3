@@ -25,7 +25,7 @@ export function loginApi(params, mode = 'modal') {
  * @description: getUserInfoById
  */
 export function getUserInfoById(params) {
-  return defHttp.get({
+  return defHttp.post({
     url: Api.GetUserInfoById,
     params,
   });

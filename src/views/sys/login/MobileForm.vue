@@ -1,19 +1,19 @@
 <template>
   <template v-if="getShow">
     <LoginFormTitle class="enter-x" />
-    <Form class="p-4 enter-x" :model="formData" :rules="getFormRules" ref="formRef">
+    <Form class="p-4 enter-x" :model="formData" :rules="getFormRules" ref="用户名">
       <FormItem name="mobile" class="enter-x">
-        <Input size="large" v-model:value="formData.mobile" placeholder="mobile" />
+        <Input size="large" v-model:value="formData.mobile" placeholder="手机号" />
       </FormItem>
       <FormItem name="sms" class="enter-x">
-        <CountdownInput size="large" v-model:value="formData.sms" placeholder="smsCode" />
+        <CountdownInput size="large" v-model:value="formData.sms" placeholder="短信验证码" />
       </FormItem>
 
       <FormItem class="enter-x">
         <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
           登录
         </Button>
-        <Button size="large" block class="mt-4" @click="handleBackLogin"> backSignIn </Button>
+        <Button size="large" block class="mt-4" @click="handleBackLogin"> 返 回 </Button>
       </FormItem>
     </Form>
   </template>

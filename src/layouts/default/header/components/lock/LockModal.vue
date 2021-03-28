@@ -1,7 +1,7 @@
 <template>
   <BasicModal
     :footer="null"
-    title="lockScreen"
+    title="锁定屏幕"
     v-bind="$attrs"
     :class="prefixCls"
     @register="register"
@@ -17,7 +17,7 @@
       <BasicForm @register="registerForm" />
 
       <div :class="`${prefixCls}__footer`">
-        <a-button type="primary" block class="mt-2" @click="handleLock"> lockScreenBtn </a-button>
+        <a-button type="primary" block class="mt-2" @click="handleLock"> 锁 定 </a-button>
       </div>
     </div>
   </BasicModal>
@@ -47,7 +47,7 @@
         schemas: [
           {
             field: 'password',
-            label: 'lockScreenPassword',
+            label: '锁屏密码',
             component: 'InputPassword',
             required: true,
           },
@@ -91,7 +91,7 @@
     &__header {
       position: absolute;
       top: 0;
-      left: calc(50% - 45px);
+      left: calc(~'50% - 45px');
       width: auto;
       text-align: center;
 

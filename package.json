@@ -52,7 +52,6 @@
     "postcss": "^7.0.35",
     "prettier": "^2.2.1",
     "qs": "^6.10.1",
-    "rollup-plugin-purge-icons": "^0.7.0",
     "style-resources-loader": "^1.4.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
     "tinycolor2": "^1.4.2",

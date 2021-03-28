@@ -8,15 +8,15 @@ const dashboard = {
   redirect: '/home/welcome',
   meta: {
     icon: 'ion:home-outline',
-    title: 'welcome',
+    title: '首页',
   },
   children: [
     {
       path: 'welcome',
-      name: 'Welcome',
+      name: '首页',
       component: () => import('@/views/dashboard/welcome/index.vue'),
       meta: {
-        title: 'welcome',
+        title: '首页',
         affix: true,
         icon: 'bx:bx-home',
       },

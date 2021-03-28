@@ -13,6 +13,7 @@
     ]"
     v-bind="getMenuEvents"
   >
+    <div style="width: 100px; height: 100px"></div>
     <AppLogo :showTitle="false" :class="`${prefixCls}-logo`" />
 
     <Trigger :class="`${prefixCls}-trigger`" />
@@ -414,7 +415,7 @@
     }
 
     > .scrollbar {
-      height: calc(100% - @header-height - 38px);
+      height: calc(~'100% - @{header-height} - 38px');
     }
 
     &.mini &-module {
@@ -530,7 +531,7 @@
       }
 
       &__content {
-        height: calc(100% - @header-height) !important;
+        height: calc(~'100% - @{header-height}') !important;
 
         .scrollbar__wrap {
           height: 100%;
@@ -558,7 +559,7 @@
       top: 50px;
       right: -1px;
       width: 1px;
-      height: calc(100% - 50px);
+      height: calc(~'100% - 50px');
       cursor: ew-resize;
       background: #f8f8f9;
       border-top: none;

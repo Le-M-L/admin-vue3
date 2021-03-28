@@ -1,6 +1,7 @@
 <template>
   <span :class="`${prefixCls}__extra-fold`" @click="handleFold">
-    <Icon :icon="getIcon" />
+    <FullscreenExitOutlined v-if="getIsUnFold" />
+    <FullscreenOutlined v-else />
   </span>
 </template>
 <script>
@@ -8,12 +9,11 @@
   import { useDesign } from '@/config/hooks/web/useDesign';
   import { useHeaderSetting } from '@/config/hooks/setting/useHeaderSetting';
   import { useMenuSetting } from '@/config/hooks/setting/useMenuSetting';
-
-  import Icon from '@/components/comps/Icon';
+  import { FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
     name: 'FoldButton',
-    components: { Icon },
+    components: { FullscreenOutlined, FullscreenExitOutlined },
 
     setup() {
       const { prefixCls } = useDesign('multiple-tabs-content');
@@ -22,10 +22,6 @@
 
       const getIsUnFold = computed(() => {
         return !unref(getShowMenu) && !unref(getShowHeader);
-      });
-
-      const getIcon = computed(() => {
-        return unref(getIsUnFold) ? 'codicon:screen-normal' : 'codicon:screen-full';
       });
 
       function handleFold() {
@@ -39,7 +35,7 @@
         });
       }
 
-      return { prefixCls, getIcon, handleFold };
+      return { prefixCls, handleFold, getIsUnFold };
     },
   });
 </script>

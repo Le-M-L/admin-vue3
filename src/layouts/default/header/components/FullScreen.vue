@@ -19,7 +19,7 @@
       const { toggleFullscreen, isFullscreenRef } = useFullscreen();
 
       const getTitle = computed(() => {
-        return unref(isFullscreenRef) ? 'tooltipExitFull' : 'tooltipEntryFull';
+        return unref(isFullscreenRef) ? '退出全屏' : '全屏';
       });
 
       return {

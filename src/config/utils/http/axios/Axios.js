@@ -202,13 +202,13 @@ export class VAxios {
     }
 
     conf = this.supportFormData(conf);
-    console.log(conf, options);
     return new Promise((resolve, reject) => {
       this.axiosInstance
         .request(conf)
         .then((res) => {
           if (transformRequestHook && isFunction(transformRequestHook)) {
             const ret = transformRequestHook(res, opt);
+            console.log(ret, errorResult);
             ret !== errorResult ? resolve(ret) : reject(new Error('request error!'));
             return;
           }

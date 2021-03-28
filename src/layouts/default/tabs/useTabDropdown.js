@@ -3,6 +3,14 @@ import { TabContentEnum, MenuEventEnum } from './types';
 import store from '@/store';
 import router from '@/router';
 import { useTabs } from '@/config/hooks/web/useTabs';
+import {
+  SyncOutlined,
+  CloseOutlined,
+  VerticalRightOutlined,
+  VerticalLeftOutlined,
+  PicCenterOutlined,
+  MinusOutlined,
+} from '@ant-design/icons-vue';
 
 export function useTabDropdown(tabContentProps) {
   const state = reactive({
@@ -41,42 +49,42 @@ export function useTabDropdown(tabContentProps) {
       store.getters['tab/getLastDragEndIndexState'] >= 0;
     const dropMenuList = [
       {
-        icon: 'ion:reload-sharp',
+        icon: <SyncOutlined />,
         event: MenuEventEnum.REFRESH_PAGE,
-        text: 'reload',
+        text: '重新加载',
         disabled: refreshDisabled,
       },
       {
-        icon: 'clarity:close-line',
+        icon: <CloseOutlined />,
         event: MenuEventEnum.CLOSE_CURRENT,
-        text: 'close',
+        text: '关闭标签页',
         disabled: meta?.affix || disabled,
         divider: true,
       },
       {
-        icon: 'line-md:arrow-close-left',
+        icon: <VerticalRightOutlined />,
         event: MenuEventEnum.CLOSE_LEFT,
-        text: 'closeLeft',
+        text: '关闭左侧标签页',
         disabled: closeLeftDisabled,
         divider: false,
       },
       {
-        icon: 'line-md:arrow-close-right',
+        icon: <VerticalLeftOutlined />,
         event: MenuEventEnum.CLOSE_RIGHT,
-        text: 'closeRight',
+        text: '关闭右侧标签页',
         disabled: closeRightDisabled,
         divider: true,
       },
       {
-        icon: 'dashicons:align-center',
+        icon: <PicCenterOutlined />,
         event: MenuEventEnum.CLOSE_OTHER,
-        text: 'closeOther',
+        text: '关闭其他标签页',
         disabled: disabled,
       },
       {
-        icon: 'clarity:minus-line',
+        icon: <MinusOutlined />,
         event: MenuEventEnum.CLOSE_ALL,
-        text: 'closeAll',
+        text: '关闭全部标签页',
         disabled: disabled,
       },
     ];

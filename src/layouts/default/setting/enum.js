@@ -58,26 +58,26 @@ export const HandlerEnum = {
 export const contentModeOptions = [
   {
     value: ContentEnum.FULL,
-    label: 'contentModeFull',
+    label: '流式',
   },
   {
     value: ContentEnum.FIXED,
-    label: 'contentModeFixed',
+    label: '顶宽',
   },
 ];
 
 export const topMenuAlignOptions = [
   {
     value: TopMenuAlignEnum.CENTER,
-    label: 'topMenuAlignRight',
+    label: '居右',
   },
   {
     value: TopMenuAlignEnum.START,
-    label: 'topMenuAlignLeft',
+    label: '居左',
   },
   {
     value: TopMenuAlignEnum.END,
-    label: 'topMenuAlignCenter',
+    label: '居中',
   },
 ];
 
@@ -85,18 +85,18 @@ export const getMenuTriggerOptions = (hideTop) => {
   return [
     {
       value: TriggerEnum.NONE,
-      label: 'menuTriggerNone',
+      label: '不显示',
     },
     {
       value: TriggerEnum.FOOTER,
-      label: 'menuTriggerBottom',
+      label: '底部',
     },
     ...(hideTop
       ? []
       : [
           {
             value: TriggerEnum.HEADER,
-            label: 'menuTriggerTop',
+            label: '顶部',
           },
         ]),
   ];
@@ -118,23 +118,23 @@ export const routerTransitionOptions = [
 
 export const menuTypeList = [
   {
-    title: 'menuTypeSidebar',
+    title: '左侧菜单模式',
     mode: MenuModeEnum.INLINE,
     type: MenuTypeEnum.SIDEBAR,
   },
   {
-    title: 'menuTypeMix',
+    title: '顶部菜单混合模式',
     mode: MenuModeEnum.INLINE,
     type: MenuTypeEnum.MIX,
   },
 
   {
-    title: 'menuTypeTopMenu',
+    title: '顶部菜单模式',
     mode: MenuModeEnum.HORIZONTAL,
     type: MenuTypeEnum.TOP_MENU,
   },
   {
-    title: 'menuTypeMixSidebar',
+    title: '左侧菜单混合模式',
     mode: MenuModeEnum.INLINE,
     type: MenuTypeEnum.MIX_SIDEBAR,
   },
@@ -143,10 +143,10 @@ export const menuTypeList = [
 export const mixSidebarTriggerOptions = [
   {
     value: MixSidebarTriggerEnum.HOVER,
-    label: 'triggerHover',
+    label: '悬停',
   },
   {
     value: MixSidebarTriggerEnum.CLICK,
-    label: 'triggerClick',
+    label: '点击',
   },
 ];

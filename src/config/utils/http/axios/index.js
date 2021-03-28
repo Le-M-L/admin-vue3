@@ -42,6 +42,7 @@ const transform = {
     // 错误的时候返回
 
     const { data } = res;
+    console.log(data);
     if (!data) {
       // return '[HTTP] Request has no return value';
       return errorResult;
@@ -149,7 +150,6 @@ const transform = {
    * @description: 响应错误处理
    */
   responseInterceptorsCatch: (error) => {
-    console.log(error);
     store.dispatch('error/setupErrorHandle', error);
     const { response, code, message } = error || {};
     const msg = response?.data?.error?.message ?? '';
@@ -172,7 +172,7 @@ const transform = {
   },
 };
 
-function createAxios (opt) {
+function createAxios(opt) {
   return new VAxios(
     deepMerge(
       {

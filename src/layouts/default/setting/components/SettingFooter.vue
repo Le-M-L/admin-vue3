@@ -2,17 +2,17 @@
   <div :class="prefixCls">
     <a-button type="primary" block @click="handleCopy">
       <CopyOutlined class="mr-2" />
-      copyBtn
+      拷贝
     </a-button>
 
     <a-button color="warning" block @click="handleResetSetting" class="my-3">
       <RedoOutlined class="mr-2" />
-      resetText
+      重置
     </a-button>
 
     <a-button color="error" block @click="handleClearAndRedo">
       <RedoOutlined class="mr-2" />
-      clearBtn
+      清空缓存并返回登录页
     </a-button>
   </div>
 </template>
@@ -21,10 +21,7 @@
 
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
 
-  import { appStore } from '@/store/modules/app';
-  import { permissionStore } from '@/store/modules/permission';
-  import { tabStore } from '@/store/modules/tab';
-  import { userStore } from '@/store/modules/user';
+  import { useStore } from 'vuex';
 
   import { useDesign } from '@/config/hooks/web/useDesign';
   import { useMessage } from '@/config/hooks/web/useMessage';
@@ -42,23 +39,23 @@
       const { getRootSetting } = useRootSetting();
       const { prefixCls } = useDesign('setting-footer');
       const { createSuccessModal, createMessage } = useMessage();
-
+      const store = useStore();
       function handleCopy() {
         const { isSuccessRef } = useCopyToClipboard(JSON.stringify(unref(getRootSetting), null, 2));
         unref(isSuccessRef) &&
           createSuccessModal({
-            title: 'operatingTitle',
-            content: 'operatingContent',
+            title: '操作成功',
+            content: '复制成功,请到 src/settings/projectSetting.js 中修改配置',
           });
       }
       function handleResetSetting() {
         try {
-          appStore.commitProjectConfigState(defaultSetting);
+          store.commit('app/commitProjectConfigState', defaultSetting);
           const { colorWeak, grayMode } = defaultSetting;
           // updateTheme(themeColor);
           updateColorWeak(colorWeak);
           updateGrayMode(grayMode);
-          createMessage.success('resetSuccess');
+          createMessage.success('重置成功');
         } catch (error) {
           createMessage.error(error);
         }
@@ -66,10 +63,10 @@
 
       function handleClearAndRedo() {
         localStorage.clear();
-        appStore.resumeAllState();
-        permissionStore.commitResetState();
-        tabStore.commitResetState();
-        userStore.commitResetState();
+        store.dispatch('app/resumeAllState');
+        store.commit('permission/commitResetState');
+        store.commit('tab/commitResetState');
+        store.commit('user/commitResetState');
         location.reload();
       }
       return {
