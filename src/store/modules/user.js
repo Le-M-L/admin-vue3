@@ -86,7 +86,7 @@ const userStore = {
         title: '温馨提醒',
         content: '是否确认退出系统?',
         onOk: async () => {
-          await dispatch('loginOut', true);
+          await dispatch('logout', true);
         },
       });
     },
