@@ -159,8 +159,8 @@ const levelRoute = {
     },
   ],
 };
-Mock.mock('http://test.com/test/basic-api/getMenuListById', 'get', ({ query }) => {
-  const { id } = query;
+Mock.mock('http://test.com/test/basic-api/getMenuListById', 'post', ({ body }) => {
+  const { id } = JSON.parse(body);
   if (!id || id === '1') {
     return resultSuccess([dashboardRoute, authRoute, levelRoute]);
   }

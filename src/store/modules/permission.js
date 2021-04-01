@@ -13,8 +13,7 @@ import { transformRouteToMenu } from '@/router/helper/menuHelper';
 
 import { filter } from '@/config/utils/helper/treeHelper';
 
-// import { getMenuListById } from '@/api/sys/menu';
-const getMenuListById = () => {};
+import { getMenuListById } from '@/api/sys/menu';
 
 import { getPermCodeByUserId } from '@/api/sys/user';
 
@@ -100,7 +99,7 @@ export default {
 
         //请求 获取列表
         let routeList = await getMenuListById({ id: paramId });
-
+        console.log(routeList);
         // 动态引入组件
         routeList = transformObjToRoute(routeList);
         //  后台路由转菜单结构

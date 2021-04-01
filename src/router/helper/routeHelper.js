@@ -48,6 +48,7 @@ function dynamicImport(dynamicViewsModules, component) {
 
 // 将背景对象转换为路由对象
 export function transformObjToRoute(routeList) {
+  console.log(routeList);
   LayoutMap.set('LAYOUT', LAYOUT);
 
   routeList.forEach((route) => {
