@@ -36,7 +36,7 @@ const staticMenus = [];
   }
 })();
 
-async function getAsyncMenus() {
+async function getAsyncMenus () {
   // 前端角色控制菜单 直接取菜单文件
   return !isBackMode() ? staticMenus : store.getters['permission/getBackMenuListState'];
 }
@@ -48,7 +48,7 @@ export const getMenus = async () => {
   return !isBackMode() ? filter(menus, basicFilter(routes)) : menus;
 };
 // 获取当前路径的顶级路径
-export async function getCurrentParentPath(currentPath) {
+export async function getCurrentParentPath (currentPath) {
   const menus = await getAsyncMenus();
 
   const allParentPath = await getAllParentPath(menus, currentPath);
@@ -57,7 +57,7 @@ export async function getCurrentParentPath(currentPath) {
 }
 
 // 获取1级菜单，删除children
-export async function getShallowMenus() {
+export async function getShallowMenus () {
   const menus = await getAsyncMenus();
   const routes = router.getRoutes();
   const shallowMenuList = menus.map((item) => ({ ...item, children: undefined }));
@@ -65,7 +65,7 @@ export async function getShallowMenus() {
 }
 
 // 获取菜单的子菜单
-export async function getChildrenMenus(parentPath) {
+export async function getChildrenMenus (parentPath) {
   const menus = await getMenus();
   const parent = menus.find((item) => item.path === parentPath);
   if (!parent || !parent.children || !!parent?.meta?.hideChildrenInMenu) return [];
@@ -74,7 +74,7 @@ export async function getChildrenMenus(parentPath) {
   return !isBackMode() ? filter(parent.children, basicFilter(routes)) : parent.children;
 }
 // 通用过滤方法
-function basicFilter(routes) {
+function basicFilter (routes) {
   return (menu) => {
     const matchRoute = routes.find((route) => {
       if (isUrl(menu.path)) return true;

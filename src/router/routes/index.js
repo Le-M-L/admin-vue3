@@ -7,7 +7,7 @@ import { PageEnum } from '@/config/enums/pageEnum';
 //引入模块
 import { importAll } from '@/config/utils';
 
-const modules = importAll(require.context('./modules', false, /\.js$/));
+const modules = importAll(require.context('./modules', true, /\.js$/));
 
 //获取modules下的路由
 const routeModuleList = [];
@@ -16,7 +16,7 @@ Object.keys(modules).forEach((item) => {
     routeModuleList.push(modules[item][key]);
   });
 });
-
+console.log(modules)
 export const asyncRoutes = [PAGE_NOT_FOUND_ROUTE, ...routeModuleList];
 
 export const RootRoute = {
