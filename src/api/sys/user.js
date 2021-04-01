@@ -32,7 +32,7 @@ export function getUserInfoById(params) {
 }
 
 export function getPermCodeByUserId(params) {
-  return defHttp.get({
+  return defHttp.post({
     url: Api.GetPermCodeByUserId,
     params,
   });

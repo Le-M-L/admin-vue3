@@ -67,8 +67,8 @@ Mock.mock('http://test.com/test/getUserInfoById', 'post', ({ body }) => {
   }
   return resultSuccess(checkUser);
 });
-Mock.mock('http://test.com/test/getPermCodeByUserId', 'get', ({ query }) => {
-  const { userId } = query;
+Mock.mock('http://test.com/test/getPermCodeByUserId', 'post', ({ body }) => {
+  const { userId } = JSON.parse(body);
   if (!userId) {
     return resultError('userId is not null!');
   }

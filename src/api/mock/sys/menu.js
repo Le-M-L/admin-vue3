@@ -104,67 +104,67 @@ const authRoute1 = {
   children: [backRoute],
 };
 
-const levelRoute = {
-  path: '/level',
-  name: 'Level',
-  component: 'LAYOUT',
-  redirect: '/level/menu1/menu1-1',
-  meta: {
-    icon: 'carbon:user-role',
-    title: 'routes.demo.level.level',
-  },
+// const levelRoute = {
+//   path: '/level',
+//   name: 'Level',
+//   component: 'LAYOUT',
+//   redirect: '/level/menu1/menu1-1',
+//   meta: {
+//     icon: 'carbon:user-role',
+//     title: 'routes.demo.level.level',
+//   },
 
-  children: [
-    {
-      path: 'menu1',
-      name: 'Menu1Demo',
-      meta: {
-        title: 'Menu1',
-      },
-      children: [
-        {
-          path: 'menu1-1',
-          name: 'Menu11Demo',
-          meta: {
-            title: 'Menu1-1',
-          },
-          children: [
-            {
-              path: 'menu1-1-1',
-              name: 'Menu111Demo',
-              component: '/demo/level/Menu111',
-              meta: {
-                title: 'Menu111',
-              },
-            },
-          ],
-        },
-        {
-          path: 'menu1-2',
-          name: 'Menu12Demo',
-          component: '/demo/level/Menu12',
-          meta: {
-            title: 'Menu1-2',
-          },
-        },
-      ],
-    },
-    {
-      path: 'menu2',
-      name: 'Menu2Demo',
-      component: '/demo/level/Menu2',
-      meta: {
-        title: 'Menu2',
-      },
-    },
-  ],
-};
-Mock.mock('http://test.com/test/basic-api/getMenuListById', 'post', ({ body }) => {
+//   children: [
+//     {
+//       path: 'menu1',
+//       name: 'Menu1Demo',
+//       meta: {
+//         title: 'Menu1',
+//       },
+//       children: [
+//         {
+//           path: 'menu1-1',
+//           name: 'Menu11Demo',
+//           meta: {
+//             title: 'Menu1-1',
+//           },
+//           children: [
+//             {
+//               path: 'menu1-1-1',
+//               name: 'Menu111Demo',
+//               component: '/demo/level/Menu111',
+//               meta: {
+//                 title: 'Menu111',
+//               },
+//             },
+//           ],
+//         },
+//         {
+//           path: 'menu1-2',
+//           name: 'Menu12Demo',
+//           component: '/demo/level/Menu12',
+//           meta: {
+//             title: 'Menu1-2',
+//           },
+//         },
+//       ],
+//     },
+//     {
+//       path: 'menu2',
+//       name: 'Menu2Demo',
+//       component: '/demo/level/Menu2',
+//       meta: {
+//         title: 'Menu2',
+//       },
+//     },
+//   ],
+// };
+Mock.mock('http://test.com/test/getMenuListById', 'post', ({ body }) => {
   const { id } = JSON.parse(body);
   if (!id || id === '1') {
-    return resultSuccess([dashboardRoute, authRoute, levelRoute]);
+    return resultSuccess([dashboardRoute, authRoute]);
   }
   if (id === '2') {
-    return resultSuccess([dashboardRoute, authRoute1, levelRoute]);
+    return resultSuccess([dashboardRoute, authRoute1]);
   }
 });

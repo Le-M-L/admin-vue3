@@ -88,7 +88,7 @@ export default {
         // !模拟从后台获取权限代码，
         //这个函数可能只需要执行一次，实际的项目可以自己在正确的时间放置
         try {
-          context.commit('changePermissionCode', '1');
+          context.dispatch('changePermissionCode', '1');
         } catch (error) {
           console.log(error);
         }
