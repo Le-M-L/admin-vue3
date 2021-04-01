@@ -26,6 +26,7 @@ module.exports = {
     'no-fallthrough': 0,
     'default-case': 0, //switch语句最后必须有default
     'no-case-declarations': 0, // 不允许在case/default子句中使用词法声明
+    "endOfLine": 0,
   },
   overrides: [
     {

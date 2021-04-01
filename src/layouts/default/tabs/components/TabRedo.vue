@@ -1,5 +1,5 @@
 <template>
-  <Tooltip title="redo" placement="bottom" :mouseEnterDelay="0.5">
+  <Tooltip title="刷新" placement="bottom" :mouseEnterDelay="0.5">
     <span :class="`${prefixCls}__extra-redo`" @click="handleRedo">
       <RedoOutlined :spin="loading" />
     </span>
