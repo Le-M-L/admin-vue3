@@ -23,6 +23,38 @@ const menu = {
                     type: 'warn',
                 },
             },
+            {
+                path: 'download',
+                name: '文件下载',
+                tag: {
+                    dot: true,
+                    type: 'warn',
+                },
+            },
+            {
+                path: 'print',
+                name: '打印',
+                tag: {
+                    dot: true,
+                    type: 'warn',
+                },
+            },
+            {
+                path: 'msg',
+                name: '消息提示',
+                tag: {
+                    dot: true,
+                    type: 'warn',
+                },
+            },
+            {
+                path: 'full-screen',
+                name: '全屏',
+                tag: {
+                    dot: true,
+                    type: 'warn',
+                },
+            },
         ],
     }
 }

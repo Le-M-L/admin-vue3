@@ -17,7 +17,6 @@ Object.keys(modules).forEach((key) => {
   const modList = Array.isArray(mod) ? [...mod] : [mod];
   menuModules.push(...modList);
 });
-
 // ===========================
 // ==========Helper===========
 // ===========================
@@ -32,6 +31,7 @@ const staticMenus = [];
   });
 
   for (const menu of menuModules) {
+    console.log(menu)
     staticMenus.push(transformMenuModule(menu));
   }
 })();

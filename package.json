@@ -19,6 +19,7 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^6.2.0",
+    "print-js": "^1.6.0",
     "qrcode": "^1.4.4",
     "sortablejs": "^1.13.0",
     "vue": "^3.0.0",
