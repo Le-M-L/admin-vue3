@@ -142,7 +142,7 @@ export default {
       commit('goToPage');
     },
     closeTabAction(context, tab) {
-      let { commit, store } = context;
+      let { commit, getters } = context;
       function getObj(tabItem) {
         const { params, path, query } = tabItem;
         return {
@@ -162,22 +162,21 @@ export default {
 
       // 关闭激活的选项卡
       let toObj = {};
-
-      const index = store.getTabsState.findIndex((item) => item.path === path);
+      const index = getters.getTabsState.findIndex((item) => item.path === path);
 
       // 如果当前选项卡位于最左边
       if (index === 0) {
         // 只有一个标签，然后跳转到主页，否则跳转到右边的标签
-        if (store.getTabsState.length === 1) {
+        if (getters.getTabsState.length === 1) {
           toObj = PageEnum.BASE_HOME;
         } else {
           //  跳到右边的标签
-          const page = store.getTabsState[index + 1];
+          const page = getters.getTabsState[index + 1];
           toObj = getObj(page);
         }
       } else {
         // 关闭当前选项卡
-        const page = store.getTabsState[index - 1];
+        const page = getters.getTabsState[index - 1];
         toObj = getObj(page);
       }
       commit('commitCloseTab', currentRoute.value);

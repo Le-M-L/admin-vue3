@@ -16,19 +16,16 @@ const assetsCDN = {
     vuex: 'Vuex',
     axios: 'axios',
     nprogress: 'NProgress',
-    'js-cookie': 'Cookies'
   },
-  css: [
-  ],
+  css: [],
   js: [
-    '//cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js',
-    '//cdn.jsdelivr.net/npm/vue-router@3.3.4/dist/vue-router.min.js',
-    '//cdn.jsdelivr.net/npm/vuex@3.4.0/dist/vuex.min.js',
-    '//cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js',
+    '//cdn.jsdelivr.net/npm/vue@3.0.10/dist/vue.global.min.js',
+    '//cdn.jsdelivr.net/npm/vue-router@4.0.5/dist/vue-router.global.min.js',
+    '//cdn.jsdelivr.net/npm/vuex@4.0.0/dist/vuex.global.min.js',
+    '//cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js',
     '//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js',
-    '//cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js'
-  ]
-}
+  ],
+};
 
 module.exports = {
   publicPath: isProd ? '/' : '/',
@@ -47,7 +44,7 @@ module.exports = {
     },
   },
   // 默认情况下，生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存。
-  filenameHashing: true,
+  filenameHashing: false,
   // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
   productionSourceMap: false,
   pluginOptions: {
@@ -83,7 +80,7 @@ module.exports = {
     );
     // 正式环境下 externals
     // if (isProd) {
-    //   config.externals = assetsCDN.externals
+    //   config.externals = assetsCDN.externals;
     // }
     // config.module.rules.push({
     //   test: /\.vue$/,
@@ -104,18 +101,20 @@ module.exports = {
   chainWebpack: (config) => {
     // 生产环境下使用CDN
     // if (isProd) {
-    //   config.plugin('html')
-    //     .tap(args => {
-    //       args[0].cdn = assetsCDN
-    //       return args
-    //     })
+    //   config.plugin('html').tap((args) => {
+    //     args[0].cdn = assetsCDN;
+    //     return args;
+    //   });
     // }
+    // 移除 prefetch 插件
+    // config.plugins.delete('preload');
+    // config.plugins.delete('prefetch');
   },
   // 配置 webpack-dev-server 行为。
   devServer: {
     open: true,
     host: 'localhost',
-    port: 8080,
+    port: 8888,
     https: false,
     hotOnly: false,
     proxy: {
@@ -125,6 +124,6 @@ module.exports = {
         changeOrigin: true,
       },
     },
-    before: (app) => { },
+    before: (app) => {},
   },
 };

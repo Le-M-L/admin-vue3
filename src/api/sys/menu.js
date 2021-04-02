@@ -9,5 +9,5 @@ const Api = {
  */
 
 export const getMenuListById = (params) => {
-  return defHttp.get({ url: Api.GetMenuListById, params });
+  return defHttp.post({ url: Api.GetMenuListById, params });
 };

@@ -13,8 +13,7 @@ import { transformRouteToMenu } from '@/router/helper/menuHelper';
 
 import { filter } from '@/config/utils/helper/treeHelper';
 
-// import { getMenuListById } from '@/api/sys/menu';
-const getMenuListById = () => {};
+import { getMenuListById } from '@/api/sys/menu';
 
 import { getPermCodeByUserId } from '@/api/sys/user';
 
@@ -89,7 +88,7 @@ export default {
         // !模拟从后台获取权限代码，
         //这个函数可能只需要执行一次，实际的项目可以自己在正确的时间放置
         try {
-          context.commit('changePermissionCode', '1');
+          context.dispatch('changePermissionCode', '1');
         } catch (error) {
           console.log(error);
         }
@@ -100,7 +99,7 @@ export default {
 
         //请求 获取列表
         let routeList = await getMenuListById({ id: paramId });
-
+        console.log(routeList);
         // 动态引入组件
         routeList = transformObjToRoute(routeList);
         //  后台路由转菜单结构
