@@ -1,17 +1,16 @@
+const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
 
-const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
-
-const plugins = []
+const plugins = [];
 if (IS_PROD) {
-  plugins.push('transform-remove-console')
+  plugins.push('transform-remove-console');
 }
 
 module.exports = {
-  presets: ["@vue/cli-plugin-babel/preset"],
-  "plugins": [
+  presets: ['@vue/cli-plugin-babel/preset'],
+  plugins: [
     ...plugins,
-    ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es", "style": true }] // `style: true` 会加载 less 文件
-  ]
+    ['import', { libraryName: 'ant-design-vue', libraryDirectory: 'es', style: true }], // `style: true` 会加载 less 文件
+  ],
   // presets: [
   //   ['@babel/preset-env', {
   //     modules: false,

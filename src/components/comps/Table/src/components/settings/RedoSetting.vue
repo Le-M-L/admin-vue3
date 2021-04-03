@@ -1,7 +1,7 @@
 <template>
   <Tooltip placement="top">
     <template #title>
-      <span>redo</span>
+      <span>刷新</span>
     </template>
     <RedoOutlined @click="redo" />
   </Tooltip>

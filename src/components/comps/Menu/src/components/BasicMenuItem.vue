@@ -15,7 +15,8 @@
     name: 'BasicMenuItem',
     components: { MenuItem: Menu.Item, MenuItemContent },
     props: itemProps,
-    setup() { // props
+    setup() {
+      // props
       const { prefixCls } = useDesign('basic-menu-item');
 
       // const getLevelClass = computed(() => {

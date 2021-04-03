@@ -30,7 +30,7 @@ module.exports = {
  * Used for animation when the element is displayed
  * @param maxOutput The larger the maxOutput output, the larger the generated css volume
  */
-function createEnterPlugin (maxOutput = 10) {
+function createEnterPlugin(maxOutput = 10) {
   const createCss = (index, d = 'x') => {
     const upd = d.toUpperCase();
     return {

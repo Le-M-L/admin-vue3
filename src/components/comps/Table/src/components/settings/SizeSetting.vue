@@ -1,7 +1,7 @@
 <template>
   <Tooltip placement="top">
     <template #title>
-      <span>settingDens</span>
+      <span>密度</span>
     </template>
 
     <Dropdown placement="bottomCenter" :trigger="['click']" :getPopupContainer="getPopupContainer">
@@ -9,13 +9,13 @@
       <template #overlay>
         <Menu @click="handleTitleClick" selectable v-model:selectedKeys="selectedKeysRef">
           <MenuItem key="default">
-            <span>settingDensDefault</span>
+            <span>默认</span>
           </MenuItem>
           <MenuItem key="middle">
-            <span>settingDensMiddle</span>
+            <span>中等</span>
           </MenuItem>
           <MenuItem key="small">
-            <span>settingDensSmall</span>
+            <span>紧凑</span>
           </MenuItem>
         </Menu>
       </template>

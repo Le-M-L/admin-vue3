@@ -16,7 +16,7 @@ Object.keys(modules).forEach((item) => {
     routeModuleList.push(modules[item][key]);
   });
 });
-console.log(modules)
+console.log(modules);
 export const asyncRoutes = [PAGE_NOT_FOUND_ROUTE, ...routeModuleList];
 
 export const RootRoute = {

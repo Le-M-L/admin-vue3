@@ -3,11 +3,7 @@
     <template v-if="!getCollapse">
       <div :class="`${prefixCls}-submenu-title`" @click.stop="handleClick" :style="getItemStyle">
         <slot name="title"></slot>
-        <Icon
-          icon="eva:arrow-ios-downward-outline"
-          :size="14"
-          :class="`${prefixCls}-submenu-title-icon`"
-        />
+        <DownOutlined style="font-size: 10px" :class="`${prefixCls}-submenu-title-icon`" />
       </div>
       <MenuCollapseTransition>
         <ul :class="prefixCls" v-show="opened">
@@ -36,10 +32,9 @@
         >
           <slot name="title"></slot>
         </div>
-        <Icon
+        <DownOutlined
           v-if="getParentSubMenu"
-          icon="eva:arrow-ios-downward-outline"
-          :size="14"
+          style="font-size: 10px"
           :class="`${prefixCls}-submenu-title-icon`"
         />
       </div>
@@ -71,16 +66,15 @@
   import { useMenuItem } from './useMenu';
   import { useSimpleRootMenuContext } from './useSimpleMenuContext';
   import MenuCollapseTransition from './MenuCollapseTransition.vue';
-  import Icon from '@/components/comps/Icon';
   import { Popover } from 'ant-design-vue';
   import { isBoolean, isObject } from '@/config/utils/is';
   import Mitt from '@/config/utils/mitt';
-
+  import { DownOutlined } from '@ant-design/icons-vue';
   const DELAY = 200;
   export default defineComponent({
     name: 'SubMenu',
     components: {
-      Icon,
+      DownOutlined,
       MenuCollapseTransition,
       Popover,
     },

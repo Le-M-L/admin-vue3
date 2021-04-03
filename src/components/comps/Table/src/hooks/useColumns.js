@@ -58,7 +58,7 @@ function handleIndexColumn(propsRef, getPaginationRef, columns) {
   columns.unshift({
     flag: INDEX_COLUMN_FLAG,
     width: 50,
-    title: 'index',
+    title: '序号',
     align: 'center',
     customRender: ({ index }) => {
       const getPagination = unref(getPaginationRef);

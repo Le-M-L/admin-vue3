@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { LAYOUT } from '@/router/constant';
+import { HomeOutlined } from '@ant-design/icons-vue';
 
 const dashboard = {
   path: '/home',
@@ -7,7 +8,7 @@ const dashboard = {
   component: LAYOUT,
   redirect: '/home/welcome',
   meta: {
-    icon: 'ion:home-outline',
+    icon: <HomeOutlined />,
     title: '首页',
   },
   children: [
@@ -18,7 +19,7 @@ const dashboard = {
       meta: {
         title: '首页',
         affix: true,
-        icon: 'bx:bx-home',
+        icon: <HomeOutlined />,
       },
     },
   ],

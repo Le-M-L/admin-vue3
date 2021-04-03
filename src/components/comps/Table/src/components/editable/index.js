@@ -1,9 +1,6 @@
-
 import { h } from 'vue';
 
 import EditableCell from './EditableCell.vue';
-
-
 
 export function renderEditCell(column) {
   return ({ text: value, record, index }) => {
@@ -35,4 +32,3 @@ export function renderEditCell(column) {
     });
   };
 }
-

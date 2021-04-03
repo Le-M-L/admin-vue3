@@ -30,7 +30,7 @@ export function usePagination(refProps) {
       pageSize: PAGE_SIZE,
       size: 'small',
       defaultPageSize: PAGE_SIZE,
-      showTotal: (total) => `total${total}`,
+      showTotal: (total) => `共 ${total} 数据`,
       showSizeChanger: true,
       pageSizeOptions: PAGE_SIZE_OPTIONS,
       itemRender: itemRender,

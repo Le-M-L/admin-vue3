@@ -11,8 +11,10 @@ import { setupErrorHandle } from '@/config/logics/error-handle';
 import { setupGlobDirectives } from '@/config/directives';
 import { registerGlobComp } from '@/components/comps/registerGlobComp';
 import { isDevMode } from '@/config/utils/env';
-import '@/api/mock';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/googlecode.css'; //样式文件
 
+import '@/api/mock';
 // router-guard
 import '@/router/guard';
 
@@ -35,6 +37,13 @@ import '@/router/guard';
 
   // 当路由准备好时就挂载
   await router.isReady();
+
+  app.directive('highlightjs', function (el) {
+    let blocks = el.querySelectorAll('pre code');
+    blocks.forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  });
 
   app.mount('#app', true);
 

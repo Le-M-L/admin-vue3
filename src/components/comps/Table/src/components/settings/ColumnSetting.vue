@@ -1,7 +1,7 @@
 <template>
   <Tooltip placement="top">
     <template #title>
-      <span>settingColumn</span>
+      <span>列设置</span>
     </template>
     <Popover
       placement="bottomLeft"
@@ -16,11 +16,11 @@
             v-model:checked="checkAll"
             @change="onCheckAllChange"
           >
-            settingColumnShow
+            列展示
           </Checkbox>
 
           <Checkbox v-model:checked="checkIndex" @change="handleIndexCheckChange">
-            settingIndexColumnShow
+            序号列
           </Checkbox>
 
           <Checkbox
@@ -28,10 +28,10 @@
             @change="handleSelectCheckChange"
             :disabled="!defaultRowSelection"
           >
-            settingSelectColumnShow
+            勾选列
           </Checkbox>
 
-          <a-button size="small" type="link" @click="reset"> resetText </a-button>
+          <a-button size="small" type="link" @click="reset"> 重置 </a-button>
         </div>
       </template>
 
@@ -46,9 +46,9 @@
                 </Checkbox>
 
                 <Tooltip placement="bottomLeft" :mouseLeaveDelay="0.4">
-                  <template #title> settingFixedLeft </template>
-                  <Icon
-                    icon="line-md:arrow-align-left"
+                  <template #title> 固定到左侧 </template>
+
+                  <LeftOutlined
                     :class="[
                       `${prefixCls}__fixed-left`,
                       {
@@ -61,9 +61,9 @@
                 </Tooltip>
                 <Divider type="vertical" />
                 <Tooltip placement="bottomLeft" :mouseLeaveDelay="0.4">
-                  <template #title> settingFixedRight </template>
-                  <Icon
-                    icon="line-md:arrow-align-left"
+                  <template #title> 固定到右侧 </template>
+
+                  <LeftOutlined
                     :class="[
                       `${prefixCls}__fixed-right`,
                       {
@@ -84,7 +84,6 @@
   </Tooltip>
 </template>
 <script>
-  // @ts-nocheck
   import {
     defineComponent,
     ref,
@@ -96,8 +95,7 @@
     computed,
   } from 'vue';
   import { Tooltip, Popover, Checkbox, Divider } from 'ant-design-vue';
-  import { SettingOutlined, DragOutlined } from '@ant-design/icons-vue';
-  import { Icon } from '@/components/comps/Icon';
+  import { SettingOutlined, DragOutlined, LeftOutlined } from '@ant-design/icons-vue';
   import { ScrollContainer } from '@/components/comps/Container';
 
   import { useTableContext } from '../../hooks/useTableContext';
@@ -119,7 +117,7 @@
       DragOutlined,
       ScrollContainer,
       Divider,
-      Icon,
+      LeftOutlined,
     },
 
     setup() {

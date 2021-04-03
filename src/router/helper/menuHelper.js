@@ -3,13 +3,13 @@ import { findPath, treeMap } from '@/config/utils/helper/treeHelper';
 import { cloneDeep } from 'lodash-es';
 import { isUrl } from '@/config/utils/is';
 
-export function getAllParentPath (treeData, path) {
+export function getAllParentPath(treeData, path) {
   const menuList = findPath(treeData, (n) => n.path === path);
   return (menuList || []).map((item) => item.path);
 }
 
 // 拼接父级路径
-function joinParentPath (menus, parentPath = '') {
+function joinParentPath(menus, parentPath = '') {
   for (let index = 0; index < menus.length; index++) {
     const menu = menus[index];
     // https://next.router.vuejs.org/guide/essentials/nested-routes.html
@@ -20,14 +20,13 @@ function joinParentPath (menus, parentPath = '') {
       menu.path = `${parentPath}/${menu.path}`;
     }
     if (menu?.children?.length) {
-
       joinParentPath(menu.children, menu.path);
     }
   }
 }
 
 // 解析菜单模块
-export function transformMenuModule (menuModule) {
+export function transformMenuModule(menuModule) {
   const { menu } = menuModule;
 
   const menuList = [menu];
@@ -36,7 +35,7 @@ export function transformMenuModule (menuModule) {
   return menuList[0];
 }
 
-export function transformRouteToMenu (routeModList) {
+export function transformRouteToMenu(routeModList) {
   const cloneRouteModList = cloneDeep(routeModList);
   const routeList = [];
 

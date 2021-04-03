@@ -5,7 +5,7 @@
     v-bind="$props"
     :class="getLevelClass"
   >
-    <Icon v-if="getIcon" :icon="getIcon" :size="16" />
+    <component v-if="getIcon" :is="getIcon"></component>
     <div v-if="collapsedShowTitle && getIsCollapseParent" class="mt-1 collapse-title">
       {{ getI18nName }}
     </div>
@@ -23,7 +23,7 @@
     :collapsedShowTitle="collapsedShowTitle"
   >
     <template #title>
-      <Icon v-if="getIcon" :icon="getIcon" :size="16" />
+      <component v-if="getIcon" :is="getIcon"></component>
 
       <div v-if="collapsedShowTitle && getIsCollapseParent" class="mt-2 collapse-title">
         {{ getI18nName }}
@@ -42,7 +42,6 @@
 <script>
   import { defineComponent, computed } from 'vue';
   import { useDesign } from '@/config/hooks/web/useDesign';
-  import Icon from '@/components/comps/Icon/index';
 
   import MenuItem from './components/MenuItem.vue';
   import SubMenu from './components/SubMenuItem.vue';
@@ -55,7 +54,6 @@
       SubMenu,
       MenuItem,
       SimpleMenuTag: createAsyncComponent(() => import('./SimpleMenuTag.vue')),
-      Icon,
     },
     props: {
       item: {
@@ -83,7 +81,6 @@
           },
         ];
       });
-
       function menuHasChildren(menuTreeItem) {
         return (
           !menuTreeItem.meta?.hideChildrenInMenu &&

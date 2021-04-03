@@ -4,7 +4,7 @@
 -->
 <template>
   <span :class="getClass">
-    <Icon icon="ion:chevron-forward" :style="$attrs.iconStyle" />
+    <RightOutlined :style="$attrs.iconStyle" />
   </span>
 </template>
 <script>
@@ -13,12 +13,11 @@
   import { useDesign } from '@/config/hooks/web/useDesign';
 
   import { propTypes } from '@/config/utils/propTypes';
-
-  import { Icon } from '@/components/comps/Icon';
+  import { RightOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
     name: 'BasicArrow',
-    components: { Icon },
+    components: { RightOutlined },
     props: {
       expand: propTypes.bool,
       top: propTypes.bool,

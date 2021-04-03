@@ -13,7 +13,6 @@ module.exports = {
     jsxPragma: 'React',
     ecmaFeatures: {
       jsx: true,
-      tsx: true,
     },
   },
   rules: {
@@ -26,7 +25,35 @@ module.exports = {
     'no-fallthrough': 0,
     'default-case': 0, //switch语句最后必须有default
     'no-case-declarations': 0, // 不允许在case/default子句中使用词法声明
-    "endOfLine": 0,
+    endOfLine: 0,
+    'vue/no-parsing-error': [
+      2,
+      {
+        'x-invalid-end-tag': false,
+      },
+    ],
+    'space-before-function-paren': 'off',
+
+    'vue/attributes-order': 'off',
+    'vue/one-component-per-file': 'off',
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/attribute-hyphenation': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'never',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
   },
   overrides: [
     {

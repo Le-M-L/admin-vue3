@@ -1,6 +1,6 @@
 <template>
   <transition-group
-    :class="prefixCls"
+    class="h-full w-full"
     v-bind="$attrs"
     ref="elRef"
     :name="transitionName"
@@ -23,7 +23,6 @@
   import { useTimeoutFn } from '@/config/hooks/core/useTimeout';
   import { useIntersectionObserver } from '@/config/hooks/event/useIntersectionObserver';
   import { propTypes } from '@/config/utils/propTypes';
-  import { useDesign } from '@/config/hooks/web/useDesign';
 
   export default defineComponent({
     name: 'LazyContainer',
@@ -61,8 +60,6 @@
         loading: false,
         intersectionObserverInstance: null,
       });
-
-      const { prefixCls } = useDesign('lazy-container');
 
       onMounted(() => {
         immediateInit();
@@ -123,17 +120,8 @@
       }
       return {
         elRef,
-        prefixCls,
         ...toRefs(state),
       };
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-lazy-container';
-
-  .@{prefix-cls} {
-    width: 100%;
-    height: 100%;
-  }
-</style>

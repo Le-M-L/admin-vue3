@@ -9,9 +9,9 @@
   import { PageWrapper } from '@/components/comps/Page';
 
   const imgList = [
-    'https://picsum.photos/id/66/346/216',
-    'https://picsum.photos/id/67/346/216',
-    'https://picsum.photos/id/68/346/216',
+    require('@/assets/images/1.jpg'),
+    require('@/assets/images/2.jpg'),
+    require('@/assets/images/3.jpg'),
   ];
   export default defineComponent({
     components: { PageWrapper, ImagePreview },
