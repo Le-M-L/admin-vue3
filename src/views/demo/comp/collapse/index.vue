@@ -3,8 +3,11 @@
     <CollapseContainer :loading="loading" class="mt-4" helpMessage="温馨提示" title="卡片折叠">
       content
     </CollapseContainer>
+
     <ExampleCode :html="html" />
+
     <PropsTable class="mt-4" :canResize="false" :dataSource="propsData" />
+
     <PropsTable class="mt-4" title="Slots" :canResize="false" :dataSource="slotsData" />
   </div>
 </template>
@@ -26,16 +29,31 @@
 
       setTimeout(() => {
         loading.value = false;
-      }, 2000);
+      }, 1000);
 
       const html = computed(() => {
         return `<template>
   <div class="m-4">
-    <CollapseContainer> content </CollapseContainer>
+    <CollapseContainer :loading="loading" class="mt-4" helpMessage="温馨提示" title="卡片折叠"> content </CollapseContainer>
   </div>
 </template>
-< /script>
-`;
+<script>
+  import { defineComponent } from 'vue';
+  import { CollapseContainer } from '@/components/comps/Container/index';
+
+  export default defineComponent({
+    components: {
+      CollapseContainer,
+    },
+    setup() {
+        const loading = ref(true);
+        setTimeout(() => {
+        loading.value = false;
+      }, 1000);
+      return {loading};
+    },
+  });
+< /script>`;
       });
 
       return {
