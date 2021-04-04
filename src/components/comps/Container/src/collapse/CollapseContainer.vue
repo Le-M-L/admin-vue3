@@ -65,9 +65,10 @@
       active: propTypes.bool.def(true),
       // Delayed loading time
       lazyTime: propTypes.number.def(0),
+      unfold: propTypes.bool.def(true),
     },
     setup(props) {
-      const show = ref(true);
+      const show = props.canExpan ? ref(props.unfold) : ref(true);
 
       const { prefixCls } = useDesign('collapse-container');
 

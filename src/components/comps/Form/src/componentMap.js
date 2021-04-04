@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 /**
  * Component list, register here to setting it in the form
  */
@@ -19,9 +17,9 @@ import {
 
 import RadioButtonGroup from './components/RadioButtonGroup.vue';
 import ApiSelect from './components/ApiSelect.vue';
-// import { BasicUpload } from '@/components/comps/Upload';
-// import { StrengthMeter } from '@/components/comps/StrengthMeter';
-import { IconPicker } from '@/components/comps/Icon';
+import { BasicUpload } from '@/components/comps/Upload';
+import { StrengthMeter } from '@/components/comps/StrengthMeter';
+import { Icon } from '@/components/comps/Icon';
 import { CountdownInput } from '@/components/comps/CountDown';
 
 const componentMap = new Map();
@@ -49,11 +47,11 @@ componentMap.set('MonthPicker', DatePicker.MonthPicker);
 componentMap.set('RangePicker', DatePicker.RangePicker);
 componentMap.set('WeekPicker', DatePicker.WeekPicker);
 componentMap.set('TimePicker', TimePicker);
-// componentMap.set('StrengthMeter', StrengthMeter);
-componentMap.set('IconPicker', IconPicker);
+componentMap.set('StrengthMeter', StrengthMeter);
+componentMap.set('Icon', Icon);
 componentMap.set('InputCountDown', CountdownInput);
 
-// componentMap.set('Upload', BasicUpload);
+componentMap.set('Upload', BasicUpload);
 
 export function add(compName, component) {
   componentMap.set(compName, component);

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { ref, onUnmounted, unref, nextTick, watch } from 'vue';
 
 import { isProdMode } from '@/config/utils/env';

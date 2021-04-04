@@ -1,15 +1,13 @@
 <template>
-  <div class="m-4">
+  <PageWrapper title="卡片折叠示例">
     <CollapseContainer :loading="loading" class="mt-4" helpMessage="温馨提示" title="卡片折叠">
       content
     </CollapseContainer>
 
     <ExampleCode :html="html" />
 
-    <PropsTable class="mt-4" :canResize="false" :dataSource="propsData" />
-
-    <PropsTable class="mt-4" title="Slots" :canResize="false" :dataSource="slotsData" />
-  </div>
+    <PropsTable class="mt-4" :slotsData="slotsData" :propsData="propsData" />
+  </PageWrapper>
 </template>
 
 <script>
@@ -18,11 +16,13 @@
   import ExampleCode from '@/components/exampleCode';
   import PropsTable from '@/components/PropsTable.vue';
   import { propsData, slotsData } from './propsData';
+  import { PageWrapper } from '@/components/comps/Page';
   export default defineComponent({
     components: {
       CollapseContainer,
       PropsTable,
       ExampleCode,
+      PageWrapper,
     },
     setup() {
       const loading = ref(true);

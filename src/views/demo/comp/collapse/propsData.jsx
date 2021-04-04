@@ -34,6 +34,13 @@ export const propsData = [
     optionValues: '-',
     explain: 'loading 状态',
   },
+  {
+    property: 'unfold',
+    type: 'boolean',
+    default: 'true',
+    optionValues: '-',
+    explain: '初始是否为展开状态 canExpan为true时才生效',
+  },
 ];
 
 export const slotsData = [

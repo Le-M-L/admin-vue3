@@ -12,12 +12,13 @@
   </RadioGroup>
 </template>
 <script>
-  import { defineComponent, computed } from 'vue';
+  // @ts-nocheck
+  import { defineComponent, computed, watchEffect, ref, unref } from 'vue';
   import { Radio } from 'ant-design-vue';
   import { isString } from '@/config/utils/is';
   import { useRuleFormItem } from '@/config/hooks/component/useFormItem';
   import { useAttrs } from '@/config/hooks/core/useAttrs';
-
+  import { isFunction } from '@/config/utils/is';
   export default defineComponent({
     name: 'RadioButtonGroup',
     components: {
@@ -32,22 +33,78 @@
         type: Array,
         default: () => [],
       },
+      api: {
+        type: Function,
+        default: null,
+      },
+      labelField: {
+        type: String,
+        default: 'valueComment',
+      },
+      valueField: {
+        type: String,
+        default: 'dictValue',
+      },
+      params: {
+        // 请求时参数 初始化调用
+        type: Object,
+        default: () => ({}),
+      },
     },
     setup(props) {
       const attrs = useAttrs();
-      // Embedded in the form, just use the hook binding to perform form verification
+      // 嵌入到表单中，只需使用钩子绑定来执行表单验证
       const [state] = useRuleFormItem(props);
-      // Processing options value
+      const options = ref([]);
+      const loading = ref(false);
+      // 处理选项值
       const getOptions = computed(() => {
-        const { options } = props;
-        if (!options || options?.length === 0) return [];
-
-        const isStringArr = options.some((item) => isString(item));
-        if (!isStringArr) return options;
-
-        return options.map((item) => ({ label: item, value: item }));
+        const { labelField, valueField } = props;
+        return unref(options).reduce((prev, next) => {
+          if (next) {
+            if (!isString(next)) {
+              prev.push({
+                label: next[labelField],
+                value: next[valueField],
+              });
+            } else {
+              prev.push({
+                label: next,
+                value: next,
+              });
+            }
+          }
+          return prev;
+        }, []);
       });
 
+      watchEffect(() => {
+        fetch();
+      });
+
+      async function fetch() {
+        const api = props.api;
+        if (!api || !isFunction(api)) {
+          options.value = props.options || [];
+
+          return;
+        }
+        try {
+          loading.value = true;
+          const { data: res = [] } = await api(props.params);
+          if (Array.isArray(res)) {
+            options.value = res;
+            // 触发表格方法
+
+            return;
+          }
+          // 触发表格方法
+        } catch (error) {
+          console.warn(error);
+        } finally {
+          loading.value = false;
+        }
+      }
       return { state, getOptions, attrs };
     },
   });

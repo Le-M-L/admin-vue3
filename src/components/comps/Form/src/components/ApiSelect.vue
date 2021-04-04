@@ -1,5 +1,10 @@
 <template>
-  <Select v-bind="attrs" :options="getOptions" v-model:value="state">
+  <Select
+    @dropdownVisibleChange="handleFetch"
+    v-bind="attrs"
+    :options="getOptions"
+    v-model:value="state"
+  >
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data"></slot>
     </template>
@@ -23,6 +28,7 @@
   import { get } from 'lodash-es';
 
   import { LoadingOutlined } from '@ant-design/icons-vue';
+
   import { propTypes } from '@/config/utils/propTypes';
 
   export default defineComponent({
@@ -46,16 +52,22 @@
       },
       // support xxx.xxx.xx
       resultField: propTypes.string.def(''),
-      labelField: propTypes.string.def('label'),
-      valueField: propTypes.string.def('value'),
+      labelField: propTypes.string.def('valueComment'),
+      valueField: propTypes.string.def('dictValue'),
+      immediate: propTypes.bool.def(true),
+      options: {
+        type: Array,
+        default: () => [],
+      },
     },
     emits: ['options-change', 'change'],
     setup(props, { emit }) {
       const options = ref([]);
       const loading = ref(false);
+      const isFirstLoad = ref(true);
       const attrs = useAttrs();
 
-      // Embedded in the form, just use the hook binding to perform form verification
+      // 嵌入到表单中，只需使用钩子绑定来执行表单验证
       const [state] = useRuleFormItem(props);
 
       const getOptions = computed(() => {
@@ -74,32 +86,47 @@
       });
 
       watchEffect(() => {
-        fetch();
+        props.immediate && fetch();
       });
 
       async function fetch() {
         const api = props.api;
-        if (!api || !isFunction(api)) return;
+        if (!api || !isFunction(api)) {
+          options.value = props.options || [];
+          return;
+        }
 
         try {
           loading.value = true;
           const res = await api(props.params);
           if (Array.isArray(res)) {
             options.value = res;
-            emit('options-change', unref(options));
+            emitChange();
             return;
           }
           if (props.resultField) {
             options.value = get(res, props.resultField) || [];
           }
-          emit('options-change', unref(options));
+          emitChange();
         } catch (error) {
           console.warn(error);
         } finally {
           loading.value = false;
         }
       }
-      return { state, attrs, getOptions, loading };
+
+      async function handleFetch() {
+        if (!props.immediate && unref(isFirstLoad)) {
+          await fetch();
+          isFirstLoad.value = false;
+        }
+      }
+      // 触发表格方法
+      function emitChange() {
+        emit('options-change', unref(options));
+      }
+
+      return { state, attrs, getOptions, loading, handleFetch };
     },
   });
 </script>

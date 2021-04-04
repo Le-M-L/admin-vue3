@@ -1,5 +1,5 @@
 <template>
-  <CollapseContainer class="mt-4" title="代码示例">
+  <CollapseContainer class="mt-4" :unfold="false" :title="title">
     <pre v-highlightjs><code class="html" >{{ html }}</code></pre>
   </CollapseContainer>
 </template>
@@ -16,6 +16,10 @@
         type: String,
         default: '',
         require: true,
+      },
+      title: {
+        type: String,
+        default: '代码示例',
       },
     },
   };

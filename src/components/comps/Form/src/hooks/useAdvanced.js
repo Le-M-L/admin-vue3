@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { computed, unref, watch } from 'vue';
 import { isBoolean, isFunction, isNumber, isObject } from '@/config/utils/is';
 

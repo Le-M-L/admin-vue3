@@ -8,8 +8,8 @@ export const modalProps = {
   // open drag
   draggable: propTypes.bool.def(true),
   centered: propTypes.bool,
-  cancelText: propTypes.string.def('cancelText'),
-  okText: propTypes.string.def('okText'),
+  cancelText: propTypes.string.def('取 消'),
+  okText: propTypes.string.def('确 定'),
 
   closeFunc: Function,
 };

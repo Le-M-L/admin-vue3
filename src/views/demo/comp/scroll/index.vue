@@ -1,0 +1,88 @@
+<template>
+  <PageWrapper title="滚动组件示例" content="基于el-scrollbar">
+    <div class="scroll-wrap">
+      <ScrollContainer class="mt-4">
+        <ul class="p-3">
+          <template v-for="index in 100" :key="index">
+            <li class="p-2" :style="{ border: '1px solid #eee' }">
+              {{ index }}
+            </li>
+          </template>
+        </ul>
+      </ScrollContainer>
+    </div>
+    <!-- 代码示例 -->
+    <ExampleCode class="mb-4" :html="baseHtml" />
+
+    <a-alert message="滚动函数" />
+    <div class="my-4">
+      <a-button @click="scrollTo(100)" class="mr-2"> 滚动到100px位置 </a-button>
+      <a-button @click="scrollTo(800)" class="mr-2"> 滚动到800px位置 </a-button>
+      <a-button @click="scrollTo(0)" class="mr-2"> 滚动到顶部 </a-button>
+      <a-button @click="scrollBottom()" class="mr-2"> 滚动到底部 </a-button>
+    </div>
+    <div class="scroll-wrap">
+      <ScrollContainer class="mt-4" ref="scrollRef">
+        <ul class="p-3">
+          <template v-for="index in 100" :key="index">
+            <li class="p-2" :style="{ border: '1px solid #eee' }">
+              {{ index }}
+            </li>
+          </template>
+        </ul>
+      </ScrollContainer>
+    </div>
+
+    <!-- 代码示例 -->
+    <ExampleCode class="mb-4" :html="funHtml" />
+
+    <PropsTable class="mt-4" :eventData="eventData" :slotsData="slotsData" />
+  </PageWrapper>
+</template>
+<script>
+  import { defineComponent, ref, unref } from 'vue';
+  import { ScrollContainer } from '@/components/comps/Container/index';
+  import { PageWrapper } from '@/components/comps/Page';
+  import ExampleCode from '@/components/exampleCode';
+  import PropsTable from '@/components/PropsTable.vue';
+  import { eventData, slotsData, baseHtml, funHtml } from './data';
+  import { Alert } from 'ant-design-vue';
+  export default defineComponent({
+    components: { ScrollContainer, PageWrapper, [Alert.name]: Alert, ExampleCode, PropsTable },
+    setup() {
+      const scrollRef = ref(null);
+
+      const getScroll = () => {
+        const scroll = unref(scrollRef);
+        if (!scroll) {
+          throw new Error('scroll is Null');
+        }
+        return scroll;
+      };
+
+      function scrollTo(top) {
+        getScroll().scrollTo(top);
+      }
+      function scrollBottom() {
+        getScroll().scrollBottom();
+      }
+
+      return {
+        eventData,
+        baseHtml,
+        scrollTo,
+        scrollRef,
+        scrollBottom,
+        funHtml,
+        slotsData,
+      };
+    },
+  });
+</script>
+<style lang="less" scoped>
+  .scroll-wrap {
+    width: 50%;
+    height: 300px;
+    background: #fff;
+  }
+</style>

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { propTypes } from '@/config/utils/propTypes';
 
 export const basicProps = {
@@ -20,7 +19,6 @@ export const basicProps = {
   schemas: {
     type: [Array],
     default: () => [],
-    required: true,
   },
   mergeDynamicData: {
     type: Object,

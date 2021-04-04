@@ -3,12 +3,12 @@ import { isNumber } from '@/config/utils/is';
 /**
  * @description: 生成placeholder
  */
-export function createPlaceholderMessage(component, flag, label) {
+export function createPlaceholderMessage(component) {
   if (component.includes('Input') || component.includes('Complete')) {
-    return `请输入${flag ? label : ''}`;
+    return 'inputText';
   }
   if (component.includes('Picker')) {
-    return `请选择${flag ? label : ''}`;
+    return 'chooseText';
   }
   if (
     component.includes('Select') ||
@@ -17,7 +17,8 @@ export function createPlaceholderMessage(component, flag, label) {
     component.includes('Radio') ||
     component.includes('Switch')
   ) {
-    return `请选择${flag ? label : ''}`;
+    // return `请选择${label}`;
+    return 'chooseText';
   }
   return '';
 }
@@ -29,16 +30,10 @@ function genType() {
 export function setComponentRuleType(rule, component) {
   if (['DatePicker', 'MonthPicker', 'WeekPicker', 'TimePicker'].includes(component)) {
     rule.type = 'object';
-  } else if (
-    ['RangePicker', 'ApiCheckbox', 'ApiCascader', 'Upload', 'CheckboxGroup', 'TimePicker'].includes(
-      component
-    )
-  ) {
+  } else if (['RangePicker', 'Upload', 'CheckboxGroup', 'TimePicker'].includes(component)) {
     rule.type = 'array';
-  } else if (['InputNumber', 'Rate'].includes(component)) {
+  } else if (['InputNumber'].includes(component)) {
     rule.type = 'number';
-  } else if (['Switch'].includes(component)) {
-    rule.type = 'boolean';
   }
 }
 

@@ -7,13 +7,13 @@ export const footerProps = {
    */
   showCancelBtn: propTypes.bool.def(true),
   cancelButtonProps: Object,
-  cancelText: propTypes.string.def('cancelText'),
+  cancelText: propTypes.string.def('取 消'),
   /**
    * @description: Show confirmation button
    */
   showOkBtn: propTypes.bool.def(true),
   okButtonProps: Object,
-  okText: propTypes.string.def('okText'),
+  okText: propTypes.string.def('确 定'),
   okType: propTypes.string.def('primary'),
   showFooter: propTypes.bool,
   footerHeight: {

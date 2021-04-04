@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { computed, unref } from 'vue';
 import { isNumber } from '@/config/utils/is';
 

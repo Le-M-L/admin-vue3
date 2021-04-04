@@ -7,6 +7,8 @@
       :data="mockData"
       :schema="schema"
     />
+    <!-- 示列说明 -->
+    <ExampleCode :html="baseHtml" />
 
     <Description
       class="mt-4"
@@ -18,31 +20,31 @@
       :schema="schema"
       :useCollapse="true"
     />
+    <!-- 示列说明 -->
+    <ExampleCode :html="verticalHtml" />
 
     <Description @register="register" class="mt-4" />
-    <Description @register="register1" class="mt-4" />
-    <PropsTable class="mt-4" :dataSource="descData" />
-    <PropsTable class="mt-4" title="Schema" :dataSource="schemaData" />
+    <!-- 示列说明 -->
+    <ExampleCode :html="useHtml" />
 
-    <pre><code >
-      {{`<Description
+    <Description @register="register1" class="mt-4" />
+    <!-- 示列说明 -->
+    <ExampleCode :html="useBorderHtml" />
+
+    <PropsTable
       class="mt-4"
-      title="垂直示例"
-      layout="vertical"
-      :collapseOptions="{ canExpand: true, helpMessage: 'help me' }"
-      :column="2"
-      :data="mockData"
-      :schema="schema"
-    />`}}
-      </code></pre>
+      :propsData="descData"
+      link="https://2x.antdv.com/components/descriptions-cn/#API"
+    />
   </PageWrapper>
 </template>
 <script>
   import { defineComponent } from 'vue';
   import { Description, useDescription } from '@/components/comps/Description/index';
   import { PageWrapper } from '@/components/comps/Page';
+  import ExampleCode from '@/components/exampleCode';
   import PropsTable from '@/components/PropsTable.vue';
-  import { descData, schemaData } from './descData';
+  import { descData, baseHtml, verticalHtml, useHtml, useBorderHtml } from './descData';
   const mockData = {
     username: 'test',
     nickName: 'VB',
@@ -81,21 +83,30 @@
   ];
 
   export default defineComponent({
-    components: { Description, PageWrapper, PropsTable },
+    components: { Description, PageWrapper, PropsTable, ExampleCode },
     setup() {
       const [register] = useDescription({
         title: 'useDescription',
         data: mockData,
         schema: schema,
       });
-
       const [register1] = useDescription({
         title: '无边框',
         bordered: false,
         data: mockData,
         schema: schema,
       });
-      return { mockData, schema, register, register1, descData, schemaData };
+      return {
+        mockData,
+        schema,
+        register,
+        register1,
+        descData,
+        baseHtml,
+        verticalHtml,
+        useHtml,
+        useBorderHtml,
+      };
     },
   });
 </script>

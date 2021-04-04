@@ -31,6 +31,7 @@ const comp = {
       path: 'table',
       name: '表格组件',
       component: getParentLayout('TableDemo'),
+      redirect: '/comp/table/basic',
       meta: {
         title: '表格组件',
       },
@@ -44,6 +45,81 @@ const comp = {
           },
         },
       ],
+    },
+    {
+      path: 'modal',
+      name: '弹窗组件',
+      component: () => import('@/views/demo/comp/modal/index.vue'),
+      meta: {
+        title: '弹窗组件',
+      },
+    },
+    {
+      path: 'upload',
+      name: '上传组件',
+      component: () => import('@/views/demo/comp/upload/index.vue'),
+      meta: {
+        title: '上传组件',
+      },
+    },
+    {
+      path: 'loading',
+      name: 'Loading',
+      component: () => import('@/views/demo/comp/loading/index.vue'),
+      meta: {
+        title: 'Loading',
+      },
+    },
+    {
+      path: 'scroll',
+      name: '滚动组件',
+      component: () => import('@/views/demo/comp/scroll/index.vue'),
+      meta: {
+        title: '滚动组件',
+      },
+    },
+    {
+      path: 'verify',
+      name: '验证组件',
+      component: getParentLayout('VerifyDemo'),
+      redirect: '/comp/verify/drag',
+      meta: {
+        title: '验证组件',
+      },
+      children: [
+        {
+          path: 'drag',
+          name: '拖拽校验',
+          component: () => import('@/views/demo/comp/verify/index.vue'),
+          meta: {
+            title: '拖拽校验',
+          },
+        },
+        {
+          path: 'rotate',
+          name: '旋转校验',
+          component: () => import('@/views/demo/comp/verify/Rotate.vue'),
+          meta: {
+            title: '旋转校验',
+          },
+        },
+      ],
+    },
+    {
+      path: 'countTo',
+      name: '数字动画',
+      component: () => import('@/views/demo/comp/count-to/index.vue'),
+      meta: {
+        title: '数字动画',
+      },
+    },
+    {
+      path: 'timestamp',
+      name: '相对时间',
+      component: () => import('@/views/demo/comp/time/index.vue'),
+      meta: {
+        title: '相对时间',
+      },
     },
   ],
 };

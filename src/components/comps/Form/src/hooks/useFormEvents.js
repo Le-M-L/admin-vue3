@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { unref, toRaw } from 'vue';
 
 import { isArray, isFunction, isObject, isString } from '@/config/utils/is';
@@ -48,11 +46,11 @@ export function useFormEvents({
       let value = values[key];
 
       const hasKey = Reflect.has(values, key);
-
+      // input 类型组件 数字转字符串
       value = handleInputNumberValue(schema?.component, value);
       // 0| '' is allow
       if (hasKey && fields.includes(key)) {
-        // time type
+        // 判断是否是日期类型组件
         if (itemIsDateType(key)) {
           if (Array.isArray(value)) {
             const arr = [];
@@ -201,7 +199,7 @@ export function useFormEvents({
       const res = handleFormValues(values);
       emit('submit', res);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 

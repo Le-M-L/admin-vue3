@@ -61,15 +61,15 @@
       showAdvancedButton: propTypes.bool.def(true),
       resetButtonOptions: {
         type: Object,
-        default: () => ({}),
+        default: () => {},
       },
       submitButtonOptions: {
         type: Object,
-        default: () => ({}),
+        default: () => {},
       },
       actionColOptions: {
         type: Object,
-        default: () => ({}),
+        default: () => {},
       },
       actionSpan: propTypes.number.def(6),
       isAdvanced: propTypes.bool,
@@ -94,7 +94,7 @@
       const getResetBtnOptions = computed(() => {
         return Object.assign(
           {
-            text: 'resetText',
+            text: '重 置',
           },
           props.resetButtonOptions
         );
@@ -103,7 +103,7 @@
       const getSubmitBtnOptions = computed(() => {
         return Object.assign(
           {
-            text: 'queryText',
+            text: '查 询',
           },
           props.submitButtonOptions
         );
